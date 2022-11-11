@@ -6,13 +6,20 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "heroku-postbuild": "ng build"
   },
   "private": true,
+  "engines": {
+    "node": "16.15.0",
+    "npm": "8.5.5"
+  },
   "dependencies": {
     "@angular/animations": "^14.2.0",
+    "@angular/cli": "~14.2.7",
     "@angular/common": "^14.2.0",
     "@angular/compiler": "^14.2.0",
+    "@angular/compiler-cli": "^14.2.0",
     "@angular/core": "^14.2.0",
     "@angular/forms": "^14.2.0",
     "@angular/platform-browser": "^14.2.0",
@@ -22,15 +29,14 @@
     "bootstrap": "^4.5.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4",
-    "@angular/cli": "~14.2.7",
-    "@angular/compiler-cli": "^14.2.0"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.7",
     "@angular/cli": "~14.2.7",
     "@angular/compiler-cli": "^14.2.0",
     "@types/jasmine": "~4.0.0",
+    "enhanced-resolve": "^3.3.0",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
