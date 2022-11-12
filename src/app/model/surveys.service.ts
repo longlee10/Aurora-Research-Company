@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Survey } from './survey.model';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,11 +14,14 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class SurveysService {
-  private baseURL = `https://dennis-test-aurora-research.herokuapp.com`
+  //private baseURL = `https://dennis-test-aurora-research.herokuapp.com`
+  private baseURL = environment.backendUri;
+  
   constructor(private http: HttpClient) { }
 
 
   getSurveys(): Observable<[Survey]> {
+    console.log(this.baseURL);
     return this.http.post<[Survey]>(`${this.baseURL}/survey/list`, null, httpOptions);
   }
 

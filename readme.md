@@ -1,5 +1,5 @@
 # Survey site frontend of Aurora Research Company
-Last update: 2022-NOV-08
+Last update: 2022-NOV-11
 
 ## 0. Technique review & Pre-requisite
 Implemented by Angular    
@@ -7,7 +7,18 @@ Implemented by Angular
 2. Angular cli
 
 ## 1. Project Structure
-For more detail, please go to the subfolder.
-1. */frontend*: Frontend application to display the data. It is going to implements with Angular
+Under construction
 
-##
+## 2. Run 
+        ng serve to run as normal    
+
+        npm run local : Changing the API path to localhost:3000
+
+## Extra
+1. Work to do
+    - [ ] Answering module
+    - [ ] Dynamically add component
+    - [ ] Authen / Author
+    - [ ] Date picker
+    - [ ] Refining Service
+    - [ ] Layout Refine

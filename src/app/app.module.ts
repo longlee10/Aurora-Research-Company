@@ -12,6 +12,8 @@ import { EditComponent } from './survey/edit/edit.component';
 import { DetailComponent } from './survey/detail/detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ActiveComponent } from './survey/active/active.component';
+import { FooterComponent } from './partials/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FormsModule } from '@angular/forms';
     CreateComponent,
     ListComponent,
     EditComponent,
-    DetailComponent
+    DetailComponent,
+    ActiveComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
