@@ -21,7 +21,6 @@ export class CreateComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(this.survey);
     this.surveryService.addSurvey(this.survey)
     .subscribe(success => this.router.navigate(["/survey/list"]));
   }

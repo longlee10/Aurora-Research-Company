@@ -24,6 +24,6 @@ export class ActiveComponent implements OnInit {
   constructor(private surveryService: SurveysService) {}
 
   ngOnInit(): void {
-    this.surveryService.getSurveys().subscribe((data) => (this.surveys = data));
+    this.surveryService.getSurveys(true).subscribe((data) => (this.surveys = data));
   }
 }

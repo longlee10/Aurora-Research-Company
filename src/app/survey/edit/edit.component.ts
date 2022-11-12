@@ -25,7 +25,6 @@ export class EditComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(this.survey);
     this.surveryService.editSurvey(this.survey)
     .subscribe(success => this.router.navigate(["/survey/list"]));
   }

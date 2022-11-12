@@ -12,13 +12,8 @@ import { mergeMap } from 'rxjs/operators';
 })
 export class LandingComponent implements OnInit {
 
-  public surveys: any;
+  constructor() { }
 
-  constructor(private surveryService: SurveysService) { }
-
-  ngOnInit(): void {
-    this.surveryService.getSurveys().subscribe(data => this.surveys = data);
-  }
-
+  ngOnInit(): void {}
 
 }

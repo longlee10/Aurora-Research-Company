@@ -16,13 +16,13 @@ export class ListComponent implements OnInit {
   constructor(private surveryService: SurveysService) { }
 
   ngOnInit(): void {
-    this.surveryService.getSurveys().subscribe(data => this.surveys = data);
+    this.surveryService.getSurveys(false).subscribe(data => this.surveys = data);
   }
 
 
   deleteSurvey(survey: Survey) {
     this.surveryService.deleteSurvey(survey._id!)
-    .pipe(mergeMap(success => this.surveryService.getSurveys()))
+    .pipe(mergeMap(success => this.surveryService.getSurveys(false)))
     .subscribe(data => this.surveys = data);
   }
 }

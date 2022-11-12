@@ -26,11 +26,11 @@ export class Answer {
     constructor(
         public _id?: string,
         public response_date?: Date,
-        public responses?: Response1[]
+        public responses?: AnswerResponse[]
     ){}
 }
 
-export class Response1 {
+export class AnswerResponse {
     constructor(
         public _id?: string,
         public question_id?: string,
