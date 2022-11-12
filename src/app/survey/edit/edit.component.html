@@ -53,7 +53,7 @@
       [(ngModel)]="survey.end_time" />
     </div>
 
-    <tbody *ngFor="let question of survey.questions">
+    <div *ngFor="let question of survey.questions">
       <div *ngIf="question.type == 'yesno'">
           <div class="form-group">
               <label for="Question{{ question.question_priority }}TextField">Question {{ question.question_priority }} (Type : Yes No)</label>
@@ -80,7 +80,7 @@
               />
           </div>
       </div>
-    </tbody>
+    </div>
     <!-- Question Buttons -->
     <div class="btn-group" role="group">
       <button type="button" class="btn btn-outline-secondary" (click)="onNewNumberQuestion()">
