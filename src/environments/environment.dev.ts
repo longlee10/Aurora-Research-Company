@@ -1,6 +1,6 @@
 /*******************************
-File Name: environment.prod.ts
-Description: Prod env definition; Default env setting
+File Name: environment.dev.ts
+Description: Dev env definition
 Web app name: Aurora Research Company
 Team name: A-Star
 Team Members:
@@ -11,6 +11,6 @@ Team Members:
   Le, Hoang Long (301236235)
 ********************************/
 export const environment = {
-  production: true,
-  backendUri: "https://aurora-research-backend.herokuapp.com"
-};
+    production: false,
+    backendUri: "https://dennis-test-aurora-research.herokuapp.com"
+  };
