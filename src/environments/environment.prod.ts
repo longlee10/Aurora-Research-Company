@@ -12,5 +12,5 @@ Team Members:
 ********************************/
 export const environment = {
   production: true,
-  backendUri: "https://dennis-test-aurora-research.herokuapp.com"
+  backendUri: "https://aurora-research-backend.herokuapp.com"
 };
