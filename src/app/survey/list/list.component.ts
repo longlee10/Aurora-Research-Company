@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Survey } from 'src/app/model/survey.model';
 import { mergeMap, retry } from 'rxjs/operators';
 import { saveAs } from "file-saver";
-import { Parser } from "json2csv";
+import { parse } from "json2csv";
 
 @Component({
   selector: 'app-list',
@@ -31,7 +31,7 @@ export class ListComponent implements OnInit {
   downloadDataset(survey: Survey) {
     this.surveryService.getSurvey(survey._id!)
     .subscribe(result => {
-      // Make a 
+      // Make a dataset
       const dataset = this.createDataset(result);
       // Save as CSV file
       const data: Blob = new Blob([dataset], {
@@ -42,6 +42,32 @@ export class ListComponent implements OnInit {
   }
   
   private createDataset(survey: Survey) {
-    return "";
+    try {
+      const questions = survey?.questions ?? [];
+      // Column headers
+      const questionFields = questions.map(question => {
+        return {label: question.name ?? "", value: question._id! };
+      });
+      const fields = [{label: "Date", value: "date"}].concat(questionFields);
+
+      // Values for each answer
+      const data = survey?.answers?.map(answer => {
+       // Get date string
+       const responseDate = answer?.response_date != undefined ? new Date(answer.response_date).toLocaleDateString() : "";
+       // Add responses
+       let resultMap = questions.reduce((acc, question) => {      
+          const questionId = question._id!;  
+          const response = answer.responses?.filter(response => (response.question_id ?? "") == questionId).shift();
+          acc.set(questionId, response?.options?.join() ?? "");
+          return acc;
+        }, new Map([["date", responseDate]]));
+        return Object.fromEntries(resultMap);
+      }) ?? [];
+
+      // Get CSV
+      return parse(data, { fields });
+    } catch (err) {
+      return `Error: ${err}`;
+    }
   }
 }
