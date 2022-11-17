@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { SurveysService } from 'src/app/model/surveys.service';
 import { Observable } from 'rxjs';
 import { Survey } from 'src/app/model/survey.model';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, retry } from 'rxjs/operators';
+import { saveAs } from "file-saver";
+import { Parser } from "json2csv";
 
 @Component({
   selector: 'app-list',
@@ -24,5 +26,22 @@ export class ListComponent implements OnInit {
     this.surveryService.deleteSurvey(survey._id!)
     .pipe(mergeMap(success => this.surveryService.getSurveys(false)))
     .subscribe(data => this.surveys = data);
+  }
+
+  downloadDataset(survey: Survey) {
+    this.surveryService.getSurvey(survey._id!)
+    .subscribe(result => {
+      // Make a 
+      const dataset = this.createDataset(result);
+      // Save as CSV file
+      const data: Blob = new Blob([dataset], {
+        type: "text/csv;charset=utf-8"
+      });
+      saveAs(data, "dataset.csv");
+    })
+  }
+  
+  private createDataset(survey: Survey) {
+    return "";
   }
 }

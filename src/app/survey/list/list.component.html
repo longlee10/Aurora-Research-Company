@@ -27,6 +27,8 @@
           <td class="text-center">
             <a href="javascript:void(0);" [routerLink]="['/survey/edit', survey._id]">Edit</a>
             |
+            <a href="javascript:void(0);" (click)="downloadDataset(survey)">Download Dataset</a>
+            |
             <a href="javascript:void(0);" (click)="deleteSurvey(survey)">Delete</a>
           </td>
         </tr>

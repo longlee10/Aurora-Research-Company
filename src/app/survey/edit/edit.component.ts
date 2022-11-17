@@ -18,7 +18,7 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     this._Activatedroute.paramMap
-    .pipe(mergeMap(params => this.surveryService.getSurvey(params.get('id')!)))
+    .pipe(mergeMap(params => this.surveryService.getSurveyWithoutAnswers(params.get('id')!)))
     .subscribe( survey => { 
       this.survey = survey; 
   });
