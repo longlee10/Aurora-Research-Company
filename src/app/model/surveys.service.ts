@@ -27,6 +27,10 @@ export class SurveysService {
     return this.http.post<Survey>(`${this.baseURL}/survey/item`, {_id: id}, httpOptions);
   }
 
+  getSurveyWithoutAnswers(id: String): Observable<Survey> {
+    return this.http.post<Survey>(`${this.baseURL}/survey/item-without-answers`, {_id: id}, httpOptions);
+  }
+
   deleteSurvey(id: String): Observable<any> {
     return this.http.post(`${this.baseURL}/survey/delete`, {"_id" :id}, httpOptions);
   }

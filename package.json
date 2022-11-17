@@ -9,7 +9,7 @@
     "test": "ng test",
     "dev": "ng serve --configuration=development",
     "local": "ng serve --configuration=local",
-    "heroku-postbuild" : "ng build --configuration production"
+    "heroku-postbuild": "ng build --configuration production"
   },
   "engines": {
     "node": "^18.9.0",
@@ -28,6 +28,8 @@
     "@fortawesome/fontawesome-free": "^5.14.0",
     "bootstrap": "^4.5.2",
     "express": "^4.18.2",
+    "file-saver": "^2.0.5",
+    "json2csv": "^5.0.7",
     "rxjs": "~7.5.0",
     "zone.js": "~0.11.4"
   },
@@ -35,7 +37,9 @@
     "@angular-devkit/build-angular": "^14.2.7",
     "@angular/cli": "~14.2.7",
     "@angular/compiler-cli": "^14.2.0",
+    "@types/file-saver": "^2.0.5",
     "@types/jasmine": "~4.0.0",
+    "@types/json2csv": "^5.0.3",
     "enhanced-resolve": "^3.3.0",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",
