@@ -1,7 +1,10 @@
 export class User {
-    email?: String; 
-    contact_number?: String;
-    username?: String;
-    password?: String;
-    displayName?: String;     
+    constructor(
+        public _id?: String,
+        public email?: String,
+        public contact_number?: String,
+        public username?: String,
+        public displayName?: String
+    ) { }
 }
+
