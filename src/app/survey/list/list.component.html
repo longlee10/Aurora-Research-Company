@@ -30,6 +30,8 @@
             <a href="javascript:void(0);" (click)="downloadDataset(survey)">Download Dataset</a>
             |
             <a href="javascript:void(0);" (click)="deleteSurvey(survey)">Delete</a>
+            |
+            <a href="javascript:void(0);" [routerLink]="['/survey/report', survey._id]">Report</a>
           </td>
         </tr>
       </tbody>
