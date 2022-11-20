@@ -5,8 +5,8 @@ export class Survey
         public author?: string,
         public name?: string,
         public description?: string,
-        public start_time?: string, 
-        public end_time?: string, 
+        public start_time?: Date, 
+        public end_time?: Date, 
         public questions?: Question[],
         public answers?: Answer[]
     ){}

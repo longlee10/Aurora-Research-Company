@@ -13,6 +13,8 @@ import { formatDate } from '@angular/common';
 export class EditComponent implements OnInit {
 
   public survey = new Survey();
+  public startTime = "";
+  public endTime = "";
 
   constructor(private surveryService: SurveysService, private router: Router, private _Activatedroute:ActivatedRoute) { }
 
@@ -21,19 +23,22 @@ export class EditComponent implements OnInit {
     .pipe(mergeMap(params => this.surveryService.getSurveyWithoutAnswers(params.get('id')!)))
     .subscribe( survey => {
       // Format date
-      console.log(survey.start_time);
-      survey.start_time = survey.start_time != undefined ? this.getFormatDate(survey.start_time) : undefined;
-      survey.end_time = survey.end_time != undefined ? this.getFormatDate(survey.end_time) : undefined;
+      this.startTime = survey.start_time == undefined ? "" : this.getFormatDate(survey.start_time);
+      this.endTime = survey.end_time == undefined ? "" : this.getFormatDate(survey.end_time);
       // Assign survey
       this.survey = survey; 
-  });
+    });
   }
 
-  private getFormatDate(date: string) {
+  private getFormatDate(date: Date) {
     return formatDate(date, "yyyy-MM-dd", "en-US", "+0000");
   }
 
   onSubmit() {
+    // Date conversion
+    this.survey.start_time = new Date(this.startTime);
+    this.survey.end_time = new Date(this.endTime);
+    // Submit
     this.surveryService.editSurvey(this.survey)
     .subscribe(success => this.router.navigate(["/survey/list"]));
   }

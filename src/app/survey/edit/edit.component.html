@@ -39,7 +39,7 @@
       id="StartTimeTextField"
       required
       name="start_time"
-      [(ngModel)]="survey.start_time" />
+      [(ngModel)]="startTime" />
     </div>
 
     <div class="form-group">
@@ -48,7 +48,7 @@
         class="form-control"
       id="EndTimeTextField"
       name="end_time"
-      [(ngModel)]="survey.end_time" />
+      [(ngModel)]="endTime" />
     </div>
 
     <div *ngFor="let question of survey.questions">
