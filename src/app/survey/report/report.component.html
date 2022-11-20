@@ -6,7 +6,7 @@
       <h1 class="text-center">Survey Report</h1>
     </div>
     <div>
-       <h3>Survey Name: {{survey.name}}</h3>
+       <h3 class="text_blue"><i class="fa fa-table"></i> Survey Name: {{survey.name}}</h3>
        <h4>Description:</h4>
        <p>{{survey.description}}</p>
     </div>
@@ -16,13 +16,20 @@
     </div>
 
 
-    <div style="background-color: #F2F7FE; padding: 16px; margin-top: 8px;" *ngFor="let question of survey.questions">
-        <h4>Question {{question.question_priority}}: {{question.name}}</h4>
-        <p>Type: {{question.type}}</p>
-        <p>Answer record: <span style="font-weight: bold;">{{generateQuestionResult(question)}}</span></p>
+    <div style="background-color: #F2F7FE; padding: 16px; margin-top: 8px; margin-bottom: 16px;" *ngFor="let question of survey.questions">
+        <h4><i class="fa fa-question-circle" style="color: #2364AA;"></i> Question {{question.question_priority}}: {{question.name}}</h4>
+        <p style="padding-left: 32px;">Type: {{question.type}}</p>
+        <p style="padding-left: 32px;">
+            <span style="font-weight: bold;">Answer record: </span>
+            <span>{{generateQuestionResult(question)}}</span>
+        </p>
             
     
 
+    </div>
+    <div style="text-align: right;">
+        <button type="button" class="btn btn-primary" (click)="back()">
+            <i class="fa fa-undo"></i> Back</button>
     </div>
   
     <!-- Servey Report -->

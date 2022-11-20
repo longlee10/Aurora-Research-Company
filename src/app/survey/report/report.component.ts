@@ -4,6 +4,7 @@ import { mergeMap } from 'rxjs';
 import { Router } from '@angular/router';
 import { Answer, Question, Survey } from 'src/app/model/survey.model';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-report',
@@ -14,7 +15,7 @@ export class ReportComponent implements OnInit {
 
   public survey: any;
 
-  constructor(private surveryService: SurveysService, private router: Router, private _Activatedroute:ActivatedRoute) { }
+  constructor(private surveryService: SurveysService, private router: Router, private _Activatedroute:ActivatedRoute, private location: Location) { }
 
   ngOnInit(): void {
     this._Activatedroute.paramMap
@@ -22,6 +23,10 @@ export class ReportComponent implements OnInit {
     .subscribe( survey => { 
       this.survey = survey;
   });
+  }
+
+  back(): void {
+    this.location.back();
   }
 
   generateQuestionResult(question:any): string {
@@ -39,7 +44,7 @@ export class ReportComponent implements OnInit {
           if(response.question_id == question._id){
             total += 1;
             if(index == this.survey.answers.length-1){
-              resultStr += response.options + ". Total responses: " + total;
+              resultStr += response.options + ". (Total responses: " + total + ")";
             }else{
               resultStr += response.options + ", ";
             }
@@ -60,16 +65,14 @@ export class ReportComponent implements OnInit {
            
             if(response.options.toString() == "yes"){
               yes += 1;
-              console.log("response.options: " + response.options)
             }else if(response.options.toString() == "no"){
               no += 1;
-              console.log("response.options: " + response.options)
             }
 
           }
         }
       }
-      resultStr ="Yes: "+ yes +  ", No: " + no + ", Total: " + total;
+      resultStr ="Yes: "+ yes +  ", No: " + no + ", Total: " + total +".";
     }
 
     if(resultStr == ""){
