@@ -7,7 +7,7 @@
   </div>
 
   <!-- Servey Form -->
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)"  ngNativeValidate>
+  <form #f="ngForm" (ngSubmit)="onSubmit()"  ngNativeValidate>
     <div class="form-group">
       <label for="NameTextField">Name</label>
       <input
@@ -63,6 +63,7 @@
             name="question.name.{{ question.question_priority }}"
             [(ngModel)]="question.name"
           />
+          <button type="button" class="btn" (click)="onRemoveQuestion(question)"><i class="fas fa-trash"></i></button>
       </div>
     </div>
     <!-- Question Buttons -->
