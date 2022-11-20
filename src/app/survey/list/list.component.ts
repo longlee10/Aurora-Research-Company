@@ -55,7 +55,7 @@ export class ListComponent implements OnInit {
        // Get date string
        const responseDate = answer?.response_date != undefined ? new Date(answer.response_date).toLocaleDateString() : "";
        // Add responses
-       let resultMap = questions.reduce((acc, question) => {      
+       const resultMap = questions.reduce((acc, question) => {      
           const questionId = question._id!;  
           const response = answer.responses?.filter(response => (response.question_id ?? "") == questionId).shift();
           acc.set(questionId, response?.options?.join() ?? "");
