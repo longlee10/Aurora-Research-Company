@@ -19,6 +19,6 @@ Under construction
     - [ ] Answering module
     - [ ] Dynamically add component
     - [ ] Authen / Author
-    - [ ] Date picker
+    - [x] Date picker
     - [ ] Refining Service
     - [ ] Layout Refine

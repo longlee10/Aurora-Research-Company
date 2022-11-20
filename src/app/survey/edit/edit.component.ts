@@ -4,6 +4,7 @@ import { mergeMap } from 'rxjs';
 import { Router } from '@angular/router';
 import { Question, Survey } from 'src/app/model/survey.model';
 import { ActivatedRoute } from '@angular/router';
+import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -18,9 +19,18 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
     this._Activatedroute.paramMap
     .pipe(mergeMap(params => this.surveryService.getSurveyWithoutAnswers(params.get('id')!)))
-    .subscribe( survey => { 
+    .subscribe( survey => {
+      // Format date
+      console.log(survey.start_time);
+      survey.start_time = survey.start_time != undefined ? this.getFormatDate(survey.start_time) : undefined;
+      survey.end_time = survey.end_time != undefined ? this.getFormatDate(survey.end_time) : undefined;
+      // Assign survey
       this.survey = survey; 
   });
+  }
+
+  private getFormatDate(date: string) {
+    return formatDate(date, "yyyy-MM-dd", "en-US", "+0000");
   }
 
   onSubmit() {
