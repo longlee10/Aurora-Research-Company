@@ -1,5 +1,5 @@
 # Survey site frontend of Aurora Research Company
-Last update: 2022-NOV-19
+Last update: 2022-NOV-19    
 For backend, please check: https://github.com/longlee10/Aurora-Research-Company-Backend
 
 ## 0. Technique review & Pre-requisite
@@ -16,7 +16,7 @@ Under construction
         npm run local : Changing the API path to localhost:3000
 
 ## 3. Live Demo
-Release: https://aurora-research-company.herokuapp.com/landing
+Release: https://aurora-research-company.herokuapp.com/landing    
 Dev: https://incomplete-site-test.herokuapp.com/
 
 ## Extra
