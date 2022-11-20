@@ -1,0 +1,30 @@
+<!-- Edit Survey Section -->
+<div class="container">
+  
+    <!-- Title -->
+    <div class="container p-3">
+      <h1 class="text-center">Survey Report</h1>
+    </div>
+    <div>
+       <h3>Survey Name: {{survey.name}}</h3>
+       <h4>Description:</h4>
+       <p>{{survey.description}}</p>
+    </div>
+
+    <div>
+        <p style="font-weight: bold;">Answer records: {{survey.answers.length}}</p>
+    </div>
+
+
+    <div style="background-color: #F2F7FE; padding: 16px; margin-top: 8px;" *ngFor="let question of survey.questions">
+        <h4>Question {{question.question_priority}}: {{question.name}}</h4>
+        <p>Type: {{question.type}}</p>
+        <p>Answer record: <span style="font-weight: bold;">{{generateQuestionResult(question)}}</span></p>
+            
+    
+
+    </div>
+  
+    <!-- Servey Report -->
+   
+</div>
