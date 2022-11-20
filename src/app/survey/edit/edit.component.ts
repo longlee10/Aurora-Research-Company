@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SurveysService } from 'src/app/model/surveys.service';
-import {NgForm} from '@angular/forms';
 import { mergeMap } from 'rxjs';
 import { Router } from '@angular/router';
 import { Question, Survey } from 'src/app/model/survey.model';
@@ -12,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditComponent implements OnInit {
 
-  public survey: any;
+  public survey = new Survey();
 
   constructor(private surveryService: SurveysService, private router: Router, private _Activatedroute:ActivatedRoute) { }
 
@@ -24,7 +23,7 @@ export class EditComponent implements OnInit {
   });
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit() {
     this.surveryService.editSurvey(this.survey)
     .subscribe(success => this.router.navigate(["/survey/list"]));
   }
@@ -45,6 +44,42 @@ export class EditComponent implements OnInit {
     question.options = [];
     question.type = "number";
     this.survey.questions?.push(question);
+  }
+
+  onMoveToPreviousQuestion(question: Question) {
+    const list = this.survey.questions;
+    if (list != undefined) {
+      const index = list.indexOf(question);
+      if (index > 0) {
+        list![index] = list![index-1];
+        list![index-1] = question;
+        this.refresh();
+      }
+    }
+  }
+
+  onMoveToNextQuestion(question: Question) {
+    const list = this.survey.questions;
+    if (list != undefined) {
+      const index = list.indexOf(question);
+      if (index > -1 && index < list.length - 1) {
+        list![index] = list![index+1];
+        list![index+1] = question;
+        this.refresh();
+      }
+    }
+  }
+
+  onRemoveQuestion(question: Question) {
+    this.survey.questions = this.survey.questions?.filter(q => q !== question);
+    this.refresh();
+  }
+
+  private refresh() {
+    // Update questions' priorities
+    this.survey.questions?.forEach((q, i) => q.question_priority = i + 1);
+    // Force rebind because Angular is unable to update changes in text input after moving the questions' order
+    this.survey = JSON.parse(JSON.stringify(this.survey));
   }
 
 }

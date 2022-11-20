@@ -63,6 +63,9 @@
             name="question.name.{{ question.question_priority }}"
             [(ngModel)]="question.name"
           />
+          <!-- Question Management Buttons -->
+          <button type="button" class="btn" (click)="onMoveToPreviousQuestion(question)"><i class="fas fa-arrow-up"></i></button>
+          <button type="button" class="btn" (click)="onMoveToNextQuestion(question)"><i class="fas fa-arrow-down"></i></button>
           <button type="button" class="btn" (click)="onRemoveQuestion(question)"><i class="fas fa-trash"></i></button>
       </div>
     </div>
