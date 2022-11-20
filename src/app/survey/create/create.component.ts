@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SurveysService } from 'src/app/model/surveys.service';
-import {NgForm} from '@angular/forms';
-import { mergeMap } from 'rxjs';
 import { Router } from '@angular/router';
 import { Question, Survey } from 'src/app/model/survey.model';
 
@@ -20,7 +18,7 @@ export class CreateComponent implements OnInit {
     this.survey.questions = new Array<Question>();
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit() {
     this.surveryService.addSurvey(this.survey)
     .subscribe(success => this.router.navigate(["/survey/list"]));
   }
@@ -42,4 +40,10 @@ export class CreateComponent implements OnInit {
     question.type = "number";
     this.survey.questions?.push(question);
   }
+  
+  onRemoveQuestion(question: Question) {
+    this.survey.questions = this.survey.questions?.filter(q => q !== question);
+    this.survey.questions?.forEach((q, i) => q.question_priority = i + 1);
+  }
+
 }
