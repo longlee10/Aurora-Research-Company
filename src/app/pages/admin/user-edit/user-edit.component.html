@@ -1,0 +1,36 @@
+<!-- Edit User Section -->
+<div class="container" style="max-width: 540px;">
+    <!-- Title -->
+    <div class="container p-3">
+        <h1 class="text-center">Edit user</h1>
+    </div>
+
+    <form [formGroup]="editForm" (ngSubmit)="editUser()">
+
+        <div class="form-group">
+            <label>Email address</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Enter email" required />
+        </div>
+        <div class="form-group">
+            <label>Contact</label>
+            <input type="text" class="form-control" formControlName="contact_number" placeholder="Enter contact number"
+                required />
+        </div>
+        <div class="form-group">
+            <label>Display Name</label>
+            <input type="text" class="form-control" formControlName="displayName" placeholder="Enter display name"
+                required />
+        </div>
+
+        <!-- Action items-->
+        <div class="form-row">
+            <div class="col">
+                <button type="submit" class="btn btn-info btn-block">Save</button>
+            </div>
+            <div class="col">
+                <a [routerLink]="['/admin/main/user-list']" class="btn btn-secondary btn-block"><i class="fa fa-undo"></i> Cancel </a>
+            </div>
+        </div>
+
+    </form>
+</div>

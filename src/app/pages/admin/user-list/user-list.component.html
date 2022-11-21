@@ -1,0 +1,31 @@
+<!-- User List Section -->
+<div class="container">
+    <!-- Title -->
+    <div class="container p-3">
+        <h1 class="text-center">User List</h1>
+    </div>
+
+    <table class="table">
+        <thead>
+            <th>Username</th>
+            <th>Display Name</th>
+            <th>Role</th>
+            <th class="text-center" scope="col">Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of Users; let i = index">
+                <td>{{user.username}}</td>
+                <td>{{user.displayName}}</td>
+                <td>{{user.role}}</td>
+                <td class="text-center">
+                    <a  href="javascript:void(0);" [routerLink]="['edit-user', user._id ]"> Edit </a>
+                    |
+                    <a  href="javascript:void(0);" (click)="deleteUser(user._id, i)"> Delete </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <a [routerLink]="['/admin/main']" class="btn btn-secondary btn-block"><i class="fa fa-undo"></i> Back</a>
+    </div>
+</div>

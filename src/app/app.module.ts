@@ -11,9 +11,15 @@ import { ListComponent } from './survey/list/list.component';
 import { EditComponent } from './survey/edit/edit.component';
 import { DetailComponent } from './survey/detail/detail.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActiveComponent } from './survey/active/active.component';
 import { FooterComponent } from './partials/footer/footer.component';
+import { UserListComponent } from './pages/admin/user-list/user-list.component';
+import { AdminGuard } from './pages/admin/admin.guard';
+import { UserEditComponent } from './pages/admin/user-edit/user-edit.component';
+import { RouterModule } from '@angular/router';
+import { MainComponent } from './pages/admin/main/main.component';
+import { SurveyListComponent } from './pages/admin/survey-list/survey-list.component';
 
 @NgModule({
   declarations: [
@@ -26,15 +32,21 @@ import { FooterComponent } from './partials/footer/footer.component';
     EditComponent,
     DetailComponent,
     ActiveComponent,
-    FooterComponent
+    FooterComponent,
+    UserListComponent,
+    UserEditComponent,
+    MainComponent,
+    SurveyListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule 
   ],
-  providers: [],
+  providers: [AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

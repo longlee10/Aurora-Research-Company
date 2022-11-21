@@ -1,0 +1,34 @@
+<!-- User List Section -->
+<div class="container">
+    <!-- Title -->
+    <div class="container p-3">
+        <h1 class="text-center">Survey List</h1>
+    </div>
+
+    <table class="table">
+        <thead>
+            <th class="text-center">Name</th>
+            <th class="text-center">Duration</th>
+            <th class="text-center" scope="col">Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let survey of Surveys; let i = index">
+                <td>{{ survey.name }}</td>
+                <td class="text-center">{{ survey.start_time | date: 'yyyy/MM/dd'}} - {{survey.end_time | date:
+                    'yyyy/MM/dd'}}</td>
+                <td class="text-center">
+                    <button
+                        [ngClass]="{'btn':true, 'btn-block':true, 'btn-warning':survey.isActive,'btn-info':!survey.isActive}"
+                        (click)="changeSurveyStatus(survey._id, !survey.isActive)">
+                        {{ survey.isActive ? 'Deactivate' : 'Activate' }}
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Return button -->
+    <div>
+        <a [routerLink]="['/admin/main']" class="btn btn-secondary btn-block"><i class="fa fa-undo"></i> Back </a>
+    </div>
+</div>
