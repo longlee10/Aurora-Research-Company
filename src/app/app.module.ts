@@ -14,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ActiveComponent } from './survey/active/active.component';
 import { FooterComponent } from './partials/footer/footer.component';
-import { ReportComponent } from './survey/report/report.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { ReportComponent } from './survey/report/report.component';
     DetailComponent,
     ActiveComponent,
     FooterComponent,
-    ReportComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,7 @@ import { ReportComponent } from './survey/report/report.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

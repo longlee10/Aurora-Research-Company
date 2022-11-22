@@ -7,7 +7,6 @@ export class Survey
         public description?: string,
         public start_time?: Date, 
         public end_time?: Date, 
-        public isActive?: boolean,
         public questions?: Question[],
         public answers?: Answer[]
     ){}
