@@ -18,6 +18,11 @@ export class AuthService
     return this.surveysService.authenticate(user);
   }
 
+  signup(user:User): Observable<any>
+  {
+    return this.surveysService.signup(user);
+  }
+
   storeUserData(token: any, user: User): void
   {
     this.surveysService.storeUserData(token, user);

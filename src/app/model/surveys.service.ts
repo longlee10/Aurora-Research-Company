@@ -63,6 +63,11 @@ export class SurveysService {
   {
     return this.http.post<any>(`${this.baseURL}/user/login`, user, this.httpOptions);
   }
+
+  signup(user: User): Observable<any>
+  {
+    return this.http.post<any>(`${this.baseURL}/user/login`, user, this.httpOptions );
+  }
   
   storeUserData(token: any, user: User): void
   {
@@ -102,4 +107,6 @@ export class SurveysService {
     console.log(token);
     console.log(this.httpOptions.headers);
   }
+
+
 }
