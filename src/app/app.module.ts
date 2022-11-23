@@ -20,6 +20,8 @@ import { UserEditComponent } from './pages/admin/user-edit/user-edit.component';
 import { RouterModule } from '@angular/router';
 import { MainComponent } from './pages/admin/main/main.component';
 import { SurveyListComponent } from './pages/admin/survey-list/survey-list.component';
+import { ReportComponent } from './survey/report/report.component';
+import { AnswerComponent } from './survey/answer/answer.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { SurveyListComponent } from './pages/admin/survey-list/survey-list.compo
     DetailComponent,
     ActiveComponent,
     FooterComponent,
+    ReportComponent,
+    AnswerComponent,
     UserListComponent,
     UserEditComponent,
     MainComponent,
