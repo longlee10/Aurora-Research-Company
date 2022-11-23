@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Survey } from './survey.model';
+import { Answer, Survey } from './survey.model';
 import { environment } from '../../environments/environment';
 
 const httpOptions = {
@@ -41,6 +41,10 @@ export class SurveysService {
 
   editSurvey(survey: any): Observable<any> {
     return this.http.post(`${this.baseURL}/survey/update`, survey, httpOptions);
+  }
+
+  addAnswer(answer: Survey): Observable<any> {
+    return this.http.post(`${this.baseURL}/survey/answer`, answer, httpOptions);
   }
 
 }

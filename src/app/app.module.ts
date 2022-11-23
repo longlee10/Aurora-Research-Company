@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { ActiveComponent } from './survey/active/active.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { ReportComponent } from './survey/report/report.component';
+import { AnswerComponent } from './survey/answer/answer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ReportComponent } from './survey/report/report.component';
     DetailComponent,
     ActiveComponent,
     FooterComponent,
-    ReportComponent
+    ReportComponent,
+    AnswerComponent
   ],
   imports: [
     BrowserModule,

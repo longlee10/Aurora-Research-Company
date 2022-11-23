@@ -7,6 +7,7 @@ import { EditComponent } from './survey/edit/edit.component';
 import { ListComponent } from './survey/list/list.component';
 import { ReportComponent } from './survey/report/report.component';
 import { ActiveComponent } from './survey/active/active.component';
+import { AnswerComponent } from './survey/answer/answer.component';
 
 const routes: Routes = [
   {path: 'landing', component: LandingComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'survey/create', component: CreateComponent },
   {path: 'survey/edit/:id', component: EditComponent },
   {path: 'survey/report/:id', component: ReportComponent },
+  {path: 'survey/answer/:id', component: AnswerComponent},
   {path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 
