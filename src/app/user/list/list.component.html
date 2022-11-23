@@ -6,7 +6,7 @@
   </div>
 
   <!-- Add Button -->
-  <a href="/survey/create" class="btn btn-info"><i class="fa fa-plus"></i> Create a new survey</a>
+  <a href="/user/main/survey/create" class="btn btn-info"><i class="fa fa-plus"></i> Create a new survey</a>
   <br>
   <br>
   
@@ -25,11 +25,13 @@
           <td>{{ survey.name }}</td>
           <td class="text-center">{{ survey.description }}</td>
           <td class="text-center">
-            <a href="javascript:void(0);" [routerLink]="['/survey/edit', survey._id]">Edit</a>
+            <a href="javascript:void(0);" [routerLink]="['/user/main/survey/edit', survey._id]">Edit</a>
             |
             <a href="javascript:void(0);" (click)="downloadDataset(survey)">Download Dataset</a>
             |
             <a href="javascript:void(0);" (click)="deleteSurvey(survey)">Delete</a>
+            |
+            <a href="javascript:void(0);" [routerLink]="['/user/main/survey/report', survey._id]">Report</a>
           </td>
         </tr>
       </tbody>

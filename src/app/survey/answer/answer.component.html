@@ -1,1 +1,89 @@
-<p>answer works!</p>
+<div class="container" align="center">
+    <!-- Survey Header part-->
+    <div class="container p-1">
+        <h1 class="text-center">Response</h1>
+    </div>
+    <table>
+        <tr>
+            <td>Survey title: </td>
+            <td>{{survey.name}}</td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td colspan="3">{{survey.description}}</td>
+        </tr>
+        <tr>
+            <td>Creator: </td>
+            <td>{{survey.author}}</td>
+            <td>End time: </td>
+            <td>{{survey.end_time | date:'short'}}</td>
+        </tr>
+    </table>
+    <span style="width: 80%">
+        <hr />
+    </span>
+
+    <!-- Question Section -->
+    <form #f="ngForm" (ngSubmit)="onSubmitAnswer(f)" ngNativeValidate>
+        <div *ngFor="let question of survey.questions; let i = index">
+            <div>
+                <div class="form-group" *ngIf="answer.responses!=undefined">
+                    <label for="Question{{ question.question_priority }}TextField">Question {{
+                        question.question_priority }}
+                        : {{question.name}}</label>
+                    <div *ngIf="question.type=='number'">
+                        <input type="number" class="form-control" id="question{{ question.question_priority }}" required
+                            name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options" />
+                    </div>
+                    <div *ngIf="question.type=='yesno'">
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" id="question{{ question.question_priority }}"
+                                required name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options"
+                                value="yes">
+                            <label for="question{{ question.question_priority }}">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" id="question{{ question.question_priority }}"
+                                required name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options"
+                                value="no">
+                            <label for="question{{ question.question_priority }}">No</label><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-info btn-block">
+                    <i class="fa fa-plus"></i> Submit
+                </button>
+            </div>
+            <div class="col">
+                <a href="/survey/active" class="btn btn-secondary btn-block"><i class="fa fa-undo"></i> Cancel</a>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- The last one -->
+</div>

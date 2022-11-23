@@ -1,43 +1,46 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { NavbarComponent } from './partials/navbar/navbar.component';
-import { LoginComponent } from './pages/login/login.component';
-import { CreateComponent } from './survey/create/create.component';
-import { ListComponent } from './survey/list/list.component';
-import { EditComponent } from './survey/edit/edit.component';
-import { DetailComponent } from './survey/detail/detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ActiveComponent } from './survey/active/active.component';
 import { FooterComponent } from './partials/footer/footer.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { AuthService } from './auth.service';
+import { AnswerComponent } from './survey/answer/answer.component';
+import { SurveysService } from './model/surveys.service';
+import { AuthService } from './model/auth.service';
+
+
+export function jwtTokenGetter(): string | null
+{
+  return localStorage.getItem('id_token');
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     LandingComponent,
-    LoginComponent,
-    CreateComponent,
-    ListComponent,
-    EditComponent,
-    DetailComponent,
     ActiveComponent,
     FooterComponent,
-    RegisterComponent
+    AnswerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: jwtTokenGetter
+      }
+    })
   ],
-  providers: [AuthService],
+  providers: [SurveysService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,49 +3,30 @@
   <a class="navbar-brand" href="/">
     <img src="/assets/img/aurora_logo_h.png" height="50px" />
   </a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
+
       <li class="nav-item">
-        <a class="nav-link" href="/landing"
-          ><i class="fas fa-lg fa-laptop-house"></i> Home</a
-        >
+        <a class="nav-link" href="/landing"><i class="fas fa-lg fa-laptop-house"></i> Home</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/survey/active"
-          ><i class="fab fa-elementor"></i> Active Surveys
-        </a>
+        <a class="nav-link" href="/survey/active"><i class="fas fa-lg fa-file-alt"></i> Active Surveys </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/survey/list"
-          ><i class="fab fa-elementor"></i> My Surveys
-        </a>
+        <a class="nav-link" href="/user/main/survey/list"><i class="fa fa-lg fa-cubes"></i> My Surveys </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/login"
-          ><i class="fas fa-lg fa-sign-in-alt"></i> Sign In
-        </a>
+        <a class="nav-link" href="#" (click)="mlogout()"> LOG OUT TEST </a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="/logout"
-          ><i class="fas fa-lg fa-sign-out-alt"></i> Sign Out
-        </a>
-      </li>
     </ul>
   </div>
 </nav>

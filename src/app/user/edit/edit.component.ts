@@ -40,7 +40,7 @@ export class EditComponent implements OnInit {
     this.survey.end_time = new Date(this.endTime);
     // Submit
     this.surveryService.editSurvey(this.survey)
-    .subscribe(success => this.router.navigate(["/survey/list"]));
+    .subscribe(success => this.router.navigate(["/user/main/survey/list"]));
   }
 
   onNewYesNoQuestion() {
@@ -66,8 +66,8 @@ export class EditComponent implements OnInit {
     if (list != undefined) {
       const index = list.indexOf(question);
       if (index > 0) {
-        list![index] = list![index-1];
-        list![index-1] = question;
+        list[index] = list[index-1];
+        list[index-1] = question;
         this.refresh();
       }
     }
@@ -78,8 +78,8 @@ export class EditComponent implements OnInit {
     if (list != undefined) {
       const index = list.indexOf(question);
       if (index > -1 && index < list.length - 1) {
-        list![index] = list![index+1];
-        list![index+1] = question;
+        list[index] = list[index+1];
+        list[index+1] = question;
         this.refresh();
       }
     }

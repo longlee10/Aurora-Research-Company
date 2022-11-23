@@ -20,7 +20,7 @@ export class CreateComponent implements OnInit {
 
   onSubmit() {
     this.surveyService.addSurvey(this.survey)
-    .subscribe(success => this.router.navigate(["/survey/list"]));
+    .subscribe(success => this.router.navigate(["/user/main/survey/list"]));
   }
 
   onNewYesNoQuestion() {
@@ -46,8 +46,8 @@ export class CreateComponent implements OnInit {
     if (list != undefined) {
       const index = list.indexOf(question);
       if (index > 0) {
-        list![index] = list![index-1];
-        list![index-1] = question;
+        list[index] = list[index-1];
+        list[index-1] = question;
         this.refresh();
       }
     }
@@ -58,8 +58,8 @@ export class CreateComponent implements OnInit {
     if (list != undefined) {
       const index = list.indexOf(question);
       if (index > -1 && index < list.length - 1) {
-        list![index] = list![index+1];
-        list![index+1] = question;
+        list[index] = list[index+1];
+        list[index+1] = question;
         this.refresh();
       }
     }
