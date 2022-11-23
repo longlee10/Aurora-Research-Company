@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     {
       this.auth.signup(this.user).subscribe(data=>{
         if(data.success){
-          localStorage.setItem('token', data.token);
+          this.auth.storeUserData(data.token, data.user);
           this.router.navigateByUrl('user/main');
         }
       })
