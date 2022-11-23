@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ActiveComponent } from './survey/active/active.component';
 import { FooterComponent } from './partials/footer/footer.component';
+import { ReportComponent } from './survey/report/report.component';
 import { AnswerComponent } from './survey/answer/answer.component';
 
 @NgModule({
@@ -28,6 +29,7 @@ import { AnswerComponent } from './survey/answer/answer.component';
     DetailComponent,
     ActiveComponent,
     FooterComponent,
+    ReportComponent,
     AnswerComponent
   ],
   imports: [

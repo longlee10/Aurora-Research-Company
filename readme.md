@@ -23,6 +23,6 @@ Dev: https://incomplete-site-test.herokuapp.com/
 1. Work to do
     - [ x ] Answering module
     - [ ] Authen / Author
-    - [ ] Date picker
+    - [x] Date picker
     - [ ] Refining Service
     - [ ] Layout Refine
