@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Answer, Survey } from './survey.model';
+import { Survey } from './survey.model';
 import { environment } from '../../environments/environment';
 import { User } from './user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -9,7 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable()
 export class SurveysService {
 
-  private user?: User;
+  user?: User;
   private authToken?: string;
   private baseURL = environment.backendUri;
 
@@ -23,10 +23,12 @@ export class SurveysService {
   };
 
   constructor(private http: HttpClient, private jwtService: JwtHelperService) {
+    this.loadUser();
     this.loadToken();
    }
 
   getSurveys(onlyActive: boolean): Observable<[Survey]> {
+    this.loadToken();
     return this.http.post<[Survey]>(`${this.baseURL}/survey/list`, {onlyActive: onlyActive}, this.httpOptions);
   }
 
@@ -70,6 +72,7 @@ export class SurveysService {
   
   storeUserData(token: any, user: User): void
   {
+
     localStorage.setItem('id_token', 'Bearer ' + token);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
@@ -93,6 +96,14 @@ export class SurveysService {
     }
   }
 
+  private loadUser(): void 
+  {
+    const user = localStorage.getItem('user');
+    if (user != null) {
+      this.user = JSON.parse(user);
+    }
+  }
+
   private loadToken(): void
   {
     const token = localStorage.getItem('id_token');
@@ -101,6 +112,5 @@ export class SurveysService {
       this.httpOptions.headers = this.httpOptions.headers.set('Authorization', token);
     }
   }
-
 
 }

@@ -15,6 +15,7 @@ export class CreateComponent implements OnInit {
   constructor(private surveyService: SurveysService, private router: Router) { }
 
   ngOnInit(): void {
+    this.survey.author = this.surveyService.user?.username;
     this.survey.questions = new Array<Question>();
   }
 
