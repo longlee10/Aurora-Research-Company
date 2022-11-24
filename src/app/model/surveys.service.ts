@@ -23,7 +23,6 @@ export class SurveysService {
   };
 
   constructor(private http: HttpClient, private jwtService: JwtHelperService) {
-    console.log("created SurveysService");
     this.loadToken();
    }
 
@@ -82,17 +81,14 @@ export class SurveysService {
     this.authToken = undefined;
     this.user = undefined;
     localStorage.clear();
-    console.log("Cleared local storage");
-    return this.http.get<any>(`${this.baseURL}/user/logout`, this.httpOptions);
+    return this.http.post<any>(`${this.baseURL}/user/logout`, this.httpOptions);
   }
 
   loggedIn(): boolean
   {
     if (this.authToken == null) {
-      console.log("auth token is null");
       return false;
     } else {
-      console.log("auth token is expired? " + this.jwtService.isTokenExpired(this.authToken))
       return !this.jwtService.isTokenExpired(this.authToken);
     }
   }
@@ -104,8 +100,6 @@ export class SurveysService {
       this.authToken = token;
       this.httpOptions.headers = this.httpOptions.headers.set('Authorization', token);
     }
-    console.log(token);
-    console.log(this.httpOptions.headers);
   }
 
 

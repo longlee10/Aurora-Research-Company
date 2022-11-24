@@ -13,12 +13,10 @@ export class AuthGuard
   {
     if (this.auth.authenticated)
     {
-      console.log('authenticated');
       return true;
     }
     else
     {
-      console.log('cannot authenticate');
       this.router.navigate(['/user/auth']);
       return false;
     }

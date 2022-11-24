@@ -49,14 +49,12 @@ export class AnswerComponent implements OnInit {
           r.question_id = q._id;
           this.answer.responses?.push(r);
         });
-        console.log(survey._id);
       });
   }
 
   onSubmitAnswer(form: NgForm) {
     this.answer.response_date = new Date();
     this.survey.answers?.push(this.answer);
-    console.log(this.answer.responses);
     this.surveryService
       .addAnswer(this.survey)
       .subscribe((success) => this.router.navigate(['/survey/active']));
