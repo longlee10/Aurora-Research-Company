@@ -98,7 +98,6 @@ export class SurveysService {
       const user = localStorage.getItem('user') ?? "";
       return JSON.parse(user);
     } catch (e) {
-      console.log("Load user error: " + e);
       return undefined;
     }
   }
