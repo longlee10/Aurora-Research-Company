@@ -1,12 +1,12 @@
 export class User {
     constructor(
-        public _id?: String,
-        public email?: String,
-        public contact_number?: String,
-        public username?: String,
-        public displayName?: String,
-        public password?: String,
-        public role?: String,   // can either be user /admin
+        public _id?: string,
+        public email?: string,
+        public contact_number?: string,
+        public username?: string,
+        public displayName?: string,
+        public password?: string,
+        public role?: string,   // can either be user /admin
     ) { }
 }
 
