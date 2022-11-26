@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../model/auth.service';
 
@@ -21,23 +20,18 @@ export class AuthComponent implements OnInit
     this.user = new User();
   }
 
-  authenticate(form: NgForm): void
+  authenticate(): void
   {
-    if (form.valid)
-    {
-      // perform authentication
-      this.auth.authenticate(this.user).subscribe(data => {
-        if (data.success)
-        {
-          this.auth.storeUserData(data.token, data.user);
-          this.router.navigateByUrl('user/main');
-        }
-      });
-    }
-    else
-    {
-      this.errorMessage = 'Form Data Invalid';
-    }
+    // perform authentication
+    this.auth.authenticate(this.user).subscribe(data => {
+      if (data.success)
+      {
+        this.auth.storeUserData(data.token, data.user);
+        this.router.navigateByUrl('user/main');
+        this.errorMessage = "";
+      } else {
+        this.errorMessage = data.message;
+      }
+    });
   }
-
 }

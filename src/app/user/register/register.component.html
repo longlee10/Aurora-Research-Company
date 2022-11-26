@@ -1,7 +1,12 @@
-<div class="bg-info p-2 text-center text-white">
-  <h3>Sample</h3>
-</div>
-<main class="container">
+<!-- Register User Section -->
+<div class="container" style="max-width: 540px;">
+
+  <!-- Title -->
+  <div class="container p-3">
+    <h1 class="text-center">Please Sign Up</h1>
+  </div>
+
+  <!-- Register Form -->
   <div class="row">
     <div class="col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-sm-8 offset-sm-1">
       <div
@@ -10,12 +15,12 @@
       >
         {{ errorMessage }}
       </div>
-      <h1>Please Sign Up</h1>
+
       <form autocomplete="off" #form="ngForm" (ngSubmit)="signup(form)">
         <fieldset class="form-group">
           <label for="username">Email:</label>
           <input
-            type="text"
+            type="email"
             class="form-control"
             name="email"
             [(ngModel)]="user.email"
@@ -100,4 +105,4 @@
       </form>
     </div>
   </div>
-</main>
+</div>
