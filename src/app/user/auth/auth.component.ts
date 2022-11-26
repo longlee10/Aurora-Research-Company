@@ -23,14 +23,14 @@ export class AuthComponent implements OnInit
   authenticate(): void
   {
     // perform authentication
-    this.auth.authenticate(this.user).subscribe(data => {
-      if (data.success)
-      {
+    this.auth.authenticate(this.user).subscribe({
+      next: data => {
         this.auth.storeUserData(data.token, data.user);
         this.router.navigateByUrl('user/main');
         this.errorMessage = "";
-      } else {
-        this.errorMessage = data.message;
+      },
+      error: e => {
+        this.errorMessage = e.error.message == undefined ? "Unknown error" : e.error.message;
       }
     });
   }

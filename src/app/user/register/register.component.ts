@@ -24,11 +24,13 @@ export class RegisterComponent implements OnInit {
 
   signup():void
   {
-    this.auth.signup(this.user)
-    .subscribe(data=>{
-      if(data.success){
+    this.auth.signup(this.user).subscribe({
+      next: data => {
         this.router.navigateByUrl('user/main');
+      },
+      error: e => {
+        this.errorMessage = e.error.message == undefined ? "Unknown error" : e.error.message;
       }
-    })
+    });
   }
 }
