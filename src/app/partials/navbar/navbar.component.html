@@ -34,24 +34,24 @@
         </a>
       </li>
 
-      <li *ngIf="isLoggedIn()" class="nav-item">
+      <li *ngIf="isLoggedIn" class="nav-item">
         <a class="nav-link">
           <i class="fas fa-lg fa-user"></i> Welcome, {{ user?.displayName }}
         </a>
       </li>
 
-      <li *ngIf="!isLoggedIn()" class="nav-item">
+      <li *ngIf="!isLoggedIn" class="nav-item">
         <a class="nav-link" href="/user/login">
           <i class="fas fa-lg fa-sign-in-alt"></i> Sign In
         </a>
       </li>
 
-      <li *ngIf="!isLoggedIn()" class="nav-item">
+      <li *ngIf="!isLoggedIn" class="nav-item">
         <a class="nav-link" href="/user/register">
           <i class="fa fa-user-plus"></i> Sign Up
         </a>
       </li>
-      <li *ngIf="isLoggedIn()" class="nav-item">
+      <li *ngIf="isLoggedIn" class="nav-item">
         <a class="nav-link" href="#" (click)="logout()">
           <i class="fas fa-lg fa-sign-out-alt"></i> Sign Out
         </a>

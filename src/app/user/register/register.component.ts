@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { first } from 'rxjs';
 import { AuthService } from 'src/app/model/auth.service';
 import { User } from 'src/app/model/user.model';
 
@@ -24,22 +22,13 @@ export class RegisterComponent implements OnInit {
     this.user = new User();
   }
 
-  signup(form: NgForm):void
+  signup():void
   {
-    if(form.valid)
-    {
-      this.auth.signup(this.user)
-      .pipe(first())
-      .subscribe(data=>{
-        if(data.success){
-          this.auth.storeUserData(data.token, data.user);
-          this.router.navigateByUrl('user/main');
-        }
-      })
-    }
-    else
-    {
-      this.errorMessage = 'Form Data Invalid';
-    }
+    this.auth.signup(this.user)
+    .subscribe(data=>{
+      if(data.success){
+        this.router.navigateByUrl('user/main');
+      }
+    })
   }
 }

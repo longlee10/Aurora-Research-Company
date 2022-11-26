@@ -15,7 +15,7 @@
       >
         {{ errorMessage }}
       </div>
-      <form autocomplete="off" #form="ngForm" (ngSubmit)="authenticate()">
+      <form autocomplete="off" #form="ngForm" (ngSubmit)="authenticate()" ngNativeValidate>
         <fieldset class="form-group">
           <label for="username">Username</label>
           <input

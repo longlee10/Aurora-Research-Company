@@ -8,21 +8,20 @@ import { User } from 'src/app/model/user.model';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
-  user?: User;
-  
   constructor(private authService: AuthService, private router: Router) { }
-
-  ngOnInit(): void {
-    this.user = this.authService.user;
-  }
 
   logout() {
     this.authService.logout().subscribe(success => this.router.navigate(["/"]));
   }
 
-  isLoggedIn(): boolean
+  get user(): User | undefined
+  {
+    return this.authService.user;
+  }
+
+  get isLoggedIn(): boolean
   {
     return this.authService.authenticated;
   }

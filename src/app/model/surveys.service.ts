@@ -66,12 +66,11 @@ export class SurveysService {
 
   signup(user: User): Observable<any>
   {
-    return this.http.post<any>(`${this.baseURL}/user/login`, user, this.httpOptions );
+    return this.http.post<any>(`${this.baseURL}/user/register`, user, this.httpOptions);
   }
   
   storeUserData(token: any, user: User): void
   {
-
     localStorage.setItem('id_token', 'Bearer ' + token);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
@@ -95,10 +94,11 @@ export class SurveysService {
 
   loadUser(): User | undefined 
   {
-    const user = localStorage.getItem('user');
-    if (user != undefined) {
+    try {
+      const user = localStorage.getItem('user') ?? "";
       return JSON.parse(user);
-    } else {
+    } catch (e) {
+      console.log("Load user error: " + e);
       return undefined;
     }
   }
