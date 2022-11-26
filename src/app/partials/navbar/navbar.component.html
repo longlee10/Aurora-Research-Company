@@ -35,7 +35,22 @@
         </a>
       </li>
 
-      <li class="nav-item">
+      <li *ngIf="isLoggedIn()" class="nav-item">
+        <i class="fas fa-lg fa-user"></i> Welcome, {{ user.displayName }}
+      </li>
+
+      <li *ngIf="!isLoggedIn()" class="nav-item">
+        <a class="nav-link" href="/user/login"
+          ><i class="fas fa-lg fa-sign-in-alt"> Sign In</i></a
+        >
+      </li>
+
+      <li *ngIf="!isLoggedIn()" class="nav-item">
+        <a class="nav-link" href="/user/register"
+          ><i class="fa fa-user-plus"> Sign Up</i></a
+        >
+      </li>
+      <li *ngIf="isLoggedIn()" class="nav-item">
         <a class="nav-link" href="#" (click)="mlogout()">
           <i class="fas fa-lg fa-sign-out-alt"></i> Sign Out
         </a>
