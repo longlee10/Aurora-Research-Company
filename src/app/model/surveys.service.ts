@@ -111,8 +111,4 @@ export class SurveysService {
     }
   }
 
-  addAnswer(answer: Survey): Observable<any> {
-    return this.http.post(`${this.baseURL}/survey/answer`, answer, httpOptions);
-  }
-
 }
