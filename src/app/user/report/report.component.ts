@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SurveysService } from 'src/app/model/surveys.service';
 import { mergeMap } from 'rxjs';
 import { Router } from '@angular/router';
-import { Answer, Question, Survey } from 'src/app/model/survey.model';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -30,7 +29,6 @@ export class ReportComponent implements OnInit {
   }
 
   generateQuestionResult(question:any): string {
-    var st: string = this.survey.name;
     var yes = 0;
     var no = 0;
     var total = 0;

@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SurveysService } from 'src/app/model/surveys.service';
 import { Router } from '@angular/router';
 import { Question, Survey } from 'src/app/model/survey.model';
+import { AuthService } from 'src/app/model/auth.service';
 
 @Component({
   selector: 'app-create',
@@ -12,15 +13,16 @@ export class CreateComponent implements OnInit {
 
   public survey = new Survey();
 
-  constructor(private surveyService: SurveysService, private router: Router) { }
+  constructor(private authService: AuthService, private surveyService: SurveysService, private router: Router) { }
 
   ngOnInit(): void {
+    this.survey.author = this.authService.user?.username;
     this.survey.questions = new Array<Question>();
   }
 
   onSubmit() {
     this.surveyService.addSurvey(this.survey)
-    .subscribe(success => this.router.navigate(["/survey/list"]));
+    .subscribe(success => this.router.navigate(["/user/main/survey/list"]));
   }
 
   onNewYesNoQuestion() {
@@ -46,8 +48,8 @@ export class CreateComponent implements OnInit {
     if (list != undefined) {
       const index = list.indexOf(question);
       if (index > 0) {
-        list![index] = list![index-1];
-        list![index-1] = question;
+        list[index] = list[index-1];
+        list[index-1] = question;
         this.refresh();
       }
     }
@@ -58,8 +60,8 @@ export class CreateComponent implements OnInit {
     if (list != undefined) {
       const index = list.indexOf(question);
       if (index > -1 && index < list.length - 1) {
-        list![index] = list![index+1];
-        list![index+1] = question;
+        list[index] = list[index+1];
+        list[index+1] = question;
         this.refresh();
       }
     }
