@@ -9,7 +9,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable()
 export class SurveysService {
 
-  user?: User;
   private authToken?: string;
   private baseURL = environment.backendUri;
 
@@ -76,13 +75,11 @@ export class SurveysService {
     localStorage.setItem('id_token', 'Bearer ' + token);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
-    this.user = user;
   }
 
   logout(): Observable<any>
   {
     this.authToken = undefined;
-    this.user = undefined;
     localStorage.clear();
     return this.http.post<any>(`${this.baseURL}/user/logout`, this.httpOptions);
   }
@@ -96,11 +93,13 @@ export class SurveysService {
     }
   }
 
-  private loadUser(): void 
+  loadUser(): User | undefined 
   {
     const user = localStorage.getItem('user');
-    if (user != null) {
-      this.user = JSON.parse(user);
+    if (user != undefined) {
+      return JSON.parse(user);
+    } else {
+      return undefined;
     }
   }
 

@@ -6,12 +6,8 @@ import { SurveysService } from './surveys.service';
 @Injectable()
 export class AuthService
 {
-  user: User;
 
-  constructor(private surveysService: SurveysService)
-  {
-    this.user = new User();
-  }
+  constructor(private surveysService: SurveysService) {}
 
   authenticate(user: User): Observable<any>
   {
@@ -26,6 +22,10 @@ export class AuthService
   storeUserData(token: any, user: User): void
   {
     this.surveysService.storeUserData(token, user);
+  }
+
+  get user(): User | undefined {
+    return this.surveysService.loadUser();
   }
 
   get authenticated(): boolean

@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SurveysService } from 'src/app/model/surveys.service';
 import { Router } from '@angular/router';
 import { Question, Survey } from 'src/app/model/survey.model';
+import { AuthService } from 'src/app/model/auth.service';
 
 @Component({
   selector: 'app-create',
@@ -12,10 +13,10 @@ export class CreateComponent implements OnInit {
 
   public survey = new Survey();
 
-  constructor(private surveyService: SurveysService, private router: Router) { }
+  constructor(private authService: AuthService, private surveyService: SurveysService, private router: Router) { }
 
   ngOnInit(): void {
-    this.survey.author = this.surveyService.user?.username;
+    this.survey.author = this.authService.user?.username;
     this.survey.questions = new Array<Question>();
   }
 

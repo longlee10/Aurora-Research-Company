@@ -10,27 +10,20 @@ import { User } from 'src/app/model/user.model';
 })
 export class NavbarComponent implements OnInit {
 
-  user: User;
+  user?: User;
   
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.user = new User();
+    this.user = this.authService.user;
   }
 
   logout() {
     this.authService.logout().subscribe(success => this.router.navigate(["/"]));
-
   }
 
   isLoggedIn(): boolean
   {
-    const result = this.authService.authenticated;
-    if (result)
-    {
-      const currentUser = localStorage.getItem('user');
-      this.user = currentUser == undefined ? undefined : JSON.parse(currentUser);
-    }
-    return result;
+    return this.authService.authenticated;
   }
 }
