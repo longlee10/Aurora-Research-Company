@@ -11,10 +11,8 @@ Team Members:
   Le, Hoang Long (301236235)
 ********************************/
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { mergeMap, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { mergeMap } from 'rxjs';
 import { Answer, AnswerResponse, Survey } from 'src/app/model/survey.model';
 import { SurveysService } from 'src/app/model/surveys.service';
 
@@ -52,7 +50,7 @@ export class AnswerComponent implements OnInit {
       });
   }
 
-  onSubmitAnswer(form: NgForm) {
+  onSubmitAnswer() {
     this.answer.response_date = new Date();
     this.survey.answers?.push(this.answer);
     this.surveryService

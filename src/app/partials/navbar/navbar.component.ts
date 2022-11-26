@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
     this.user = new User();
   }
 
-   mlogout() {
+  logout() {
     this.authService.logout().subscribe(success => this.router.navigate(["/"]));
 
   }
@@ -28,7 +28,8 @@ export class NavbarComponent implements OnInit {
     const result = this.authService.authenticated;
     if (result)
     {
-      this.user = JSON.parse(localStorage.getItem('user'));
+      const currentUser = localStorage.getItem('user');
+      this.user = currentUser == undefined ? undefined : JSON.parse(currentUser);
     }
     return result;
   }
