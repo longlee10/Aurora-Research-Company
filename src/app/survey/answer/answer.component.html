@@ -38,13 +38,13 @@
                     <div *ngIf="question.type=='yesno'">
                         <div class="form-check form-check-inline">
                             <input type="radio" class="form-check-input" id="question{{ question.question_priority }}"
-                                required name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options"
+                                name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options"
                                 value="yes" ng-required="true">
                             <label for="question{{ question.question_priority }}">Yes</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input type="radio" class="form-check-input" id="question{{ question.question_priority }}"
-                                required name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options"
+                                name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options"
                                 value="no" ng-required="true">
                             <label for="question{{ question.question_priority }}">No</label><br>
                         </div>
