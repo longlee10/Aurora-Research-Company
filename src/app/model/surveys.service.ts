@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Survey } from './survey.model';
+import { Answer, Survey } from './survey.model';
 import { environment } from '../../environments/environment';
 import { User } from './user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -109,6 +109,10 @@ export class SurveysService {
       this.authToken = token;
       this.httpOptions.headers = this.httpOptions.headers.set('Authorization', token);
     }
+  }
+
+  addAnswer(answer: Survey): Observable<any> {
+    return this.http.post(`${this.baseURL}/survey/answer`, answer, httpOptions);
   }
 
 }
