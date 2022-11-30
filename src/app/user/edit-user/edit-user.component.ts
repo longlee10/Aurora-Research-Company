@@ -11,28 +11,28 @@ import { SurveysService } from 'src/app/model/surveys.service';
 })
 export class EditUserComponent implements OnInit {
   editing = false;
-  private user: User = new User();
+  user = new User();
 
   constructor(
     private router: Router, 
     private activeRoute: ActivatedRoute,
     private service: SurveysService
   ) { 
-    this.editing = activeRoute.snapshot.params.mode === 'edit';
+   // this.editing = activeRoute.snapshot.params.mode === 'edit';
 
     if (this.editing){
-      Object.assign(this.user, this.getUser(activeRoute.snapshot.params.id));
+      //Object.assign(this.user, this.getUser(activeRoute.snapshot.params.id));
     }
   }
 
   ngOnInit(): void {
   }
 
-  private getUser(id: String): User
+  /*private getUser(id: String): User
   {
     return this.user.find(u => u._id===id);
   }
-
+*/
   private saveUser(savedUser: User):void
   {
     this.service.updateUser(savedUser).subscribe(
