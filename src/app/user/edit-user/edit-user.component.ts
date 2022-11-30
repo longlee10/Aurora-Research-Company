@@ -17,31 +17,14 @@ export class EditUserComponent implements OnInit {
     private router: Router, 
     private activeRoute: ActivatedRoute,
     private service: SurveysService
-  ) { 
-   // this.editing = activeRoute.snapshot.params.mode === 'edit';
-
-    if (this.editing){
-      //Object.assign(this.user, this.getUser(activeRoute.snapshot.params.id));
-    }
-  }
+  ) {}
 
   ngOnInit(): void {
   }
 
-  /*private getUser(id: String): User
-  {
-    return this.user.find(u => u._id===id);
-  }
-*/
-  private saveUser(savedUser: User):void
-  {
-    this.service.updateUser(savedUser).subscribe(
-      u => u._id === savedUser._id);
-  }
-
   save(form: NgForm):void
   {
-    this.saveUser(this.user);
-    this.router.navigateByUrl('/landing');
+    this.service.updateUser(this.user)
+    .subscribe(success => this.router.navigate(["/landing"]));
   }
 }
