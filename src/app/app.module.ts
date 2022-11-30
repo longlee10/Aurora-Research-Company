@@ -12,7 +12,7 @@ import { FooterComponent } from './partials/footer/footer.component';
 import { AnswerComponent } from './survey/answer/answer.component';
 import { SurveysService } from './model/surveys.service';
 import { AuthService } from './model/auth.service';
-
+import { SharedModule } from './shared/share.module';
 
 export function jwtTokenGetter(): string | null
 {
@@ -33,7 +33,7 @@ export function jwtTokenGetter(): string | null
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-
+    SharedModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: jwtTokenGetter

@@ -10,6 +10,16 @@ import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
 import { ReportComponent } from './report/report.component';
 import { RegisterComponent } from './register/register.component';
+import { SharedModule } from '../shared/share.module';
+
+// Chart related import
+import { NgxEchartsModule } from 'ngx-echarts';
+import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import { TitleComponent, TooltipComponent, GridComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+
+echarts.use([TitleComponent, TooltipComponent, GridComponent, BarChart, CanvasRenderer]);
 
 const routing = RouterModule.forChild([
   { path: 'auth', component: AuthComponent },
@@ -25,8 +35,24 @@ const routing = RouterModule.forChild([
 ]);
 
 @NgModule({
-  imports: [CommonModule, FormsModule, routing],
-  providers: [AuthGuard],
-  declarations: [AuthComponent, UserComponent, ListComponent, CreateComponent, EditComponent, ReportComponent, RegisterComponent]
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    routing,
+    NgxEchartsModule.forRoot({ echarts }),
+    SharedModule
+  ],
+  providers: [
+    AuthGuard
+  ],
+  declarations: [
+    AuthComponent, 
+    UserComponent, 
+    ListComponent, 
+    CreateComponent, 
+    EditComponent, 
+    ReportComponent, 
+    RegisterComponent
+  ]
 })
 export class UserModule {}

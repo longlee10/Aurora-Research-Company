@@ -23,7 +23,7 @@
       <tbody *ngFor="let survey of surveys">
         <tr>
           <td style="padding-left: 32px;">{{ survey.name }}</td>
-          <td class="">{{ survey.description }}</td>
+          <td class="">{{ survey.description | truncate:200:'...'}}</td>
           <td class="text-right">
 
             <a href="javascript:void(0);" [routerLink]="['/user/main/survey/edit', survey._id]" class="btn btn-primary btn-margin">
