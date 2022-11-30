@@ -1,6 +1,5 @@
 <!-- Active Surveys Section -->
 <div class="container">
-
   <!-- Title -->
   <div class="container p-3">
     <h1 class="text-center">Active Surveys</h1>
@@ -14,15 +13,22 @@
           <tr>
             <th class="text-center">Name</th>
             <th class="text-center">Description</th>
-              </tr>
+          </tr>
         </thead>
         <tbody *ngFor="let survey of surveys">
           <tr>
             <td>{{ survey.name }}</td>
-            
-            <td class="text-center"> <a href="javascript:void(0);" [routerLink]="['/survey/answer', survey._id]">{{ survey.description }}</a></td>
+
+            <td class="text-center">
+              <a
+                href="javascript:void(0);"
+                [routerLink]="['/survey/answer', survey._id]"
+                >{{ survey.description }}</a
+              >
+            </td>
           </tr>
         </tbody>
       </table>
+    </div>
   </div>
 </div>

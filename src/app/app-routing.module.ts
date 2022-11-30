@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'login', redirectTo: '/user/auth', pathMatch: 'full'},
   {path: 'user/register', component: RegisterComponent},
   {path: 'survey/active', component: ActiveComponent },
-  {path: 'user/edit', component :EditUserComponent},
+  {path: 'user/edit/:id', component :EditUserComponent},
   {path: 'survey/answer/:id', component: AnswerComponent},
   {path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule)},
   {path: '', redirectTo: 'landing', pathMatch: 'full' },
