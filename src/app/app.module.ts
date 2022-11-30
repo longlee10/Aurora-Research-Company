@@ -43,4 +43,11 @@ export function jwtTokenGetter(): string | null
   providers: [SurveysService, AuthService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private auth: AuthService) {
+    // Logout if the token expired, a better solution should be examined later
+    if(!auth.authenticated) {
+      auth.logout().subscribe();
+    }
+  }
+ }
