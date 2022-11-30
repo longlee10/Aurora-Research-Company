@@ -13,7 +13,6 @@ import { AnswerComponent } from './survey/answer/answer.component';
 import { SurveysService } from './model/surveys.service';
 import { AuthService } from './model/auth.service';
 
-
 export function jwtTokenGetter(): string | null
 {
   return localStorage.getItem('id_token');

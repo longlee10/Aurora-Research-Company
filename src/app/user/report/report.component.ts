@@ -26,7 +26,7 @@ export class ReportComponent implements OnInit {
     .subscribe( survey => { 
       this.survey = survey;
       this.loadChartDataToMap(survey);
-  });
+    });
   }
 
   private loadChartDataToMap(survey: Survey): void {
