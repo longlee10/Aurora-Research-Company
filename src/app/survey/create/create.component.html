@@ -1,14 +1,14 @@
-<!-- Edit Survey Section -->
+<!-- Create Survey Section -->
 <div class="container" style="max-width: 540px;">
-  
+
   <!-- Title -->
   <div class="container p-3">
-    <h1 class="text-center aurora-title">Edit Survey</h1>
+    <h1 class="text-center">Create a survey</h1>
   </div>
 
   <!-- Servey Form -->
-  <form #f="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
-    <div class="form-group question-bg">
+  <form #f="ngForm" (ngSubmit)="onSubmit()"  ngNativeValidate>
+    <div class="form-group">
       <label for="NameTextField">Name</label>
       <input
         type="text"
@@ -20,7 +20,7 @@
       />
     </div>
 
-    <div class="form-group question-bg">
+    <div class="form-group">
       <label for="DescriptionTextField">Description</label>
       <input
         type="text"
@@ -32,28 +32,29 @@
       />
     </div>
 
-    <div class="form-group question-bg">
+    <div class="form-group">
       <label for="StartTimeTextField">Start Time</label>
       <input type="date"              
         class="form-control"
       id="StartTimeTextField"
       required
       name="start_time"
-      [(ngModel)]="startTime" />
+      [(ngModel)]="survey.start_time" />
     </div>
 
-    <div class="form-group question-bg">
+    <div class="form-group">
       <label for="EndTimeTextField">End Time</label>
       <input type="date"              
         class="form-control"
       id="EndTimeTextField"
+      required
       name="end_time"
-      [(ngModel)]="endTime" />
+      [(ngModel)]="survey.end_time" />
     </div>
 
     <div *ngFor="let question of survey.questions">
-      <div class="form-group question-bg">
-          <label for="Question{{ question.question_priority }}TextField"><i class="fa fa-question-circle" style="color: #2393cb;"></i> Question {{ question.question_priority }} (Type : {{ question.type }})</label>
+      <div class="form-group">
+          <label for="Question{{ question.question_priority }}TextField">Question {{ question.question_priority }} (Type : {{ question.type }})</label>
           <input
             type="text"
             class="form-control"
@@ -84,13 +85,13 @@
       <div class="row">
         <div class="col">
           <button type="submit" class="btn btn-info btn-block">
-            <i class="fas fa-edit"></i> Edit
+            <i class="fa fa-plus"></i> Create
           </button>
         </div>
         <div class="col">
-          <a href="/user/main/survey/list" class="btn btn-secondary btn-block"><i class="fa fa-undo"></i> Cancel</a>
+          <a href="/survey/list" class="btn btn-secondary btn-block"><i class="fa fa-undo"></i> Cancel</a>
         </div>
       </div>
     </div>
   </form>
-  </div>
+</div>

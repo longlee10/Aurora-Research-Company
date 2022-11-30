@@ -3,30 +3,29 @@
   
     <!-- Title -->
     <div class="container p-3">
-      <h1 class="text-center aurora-title">Survey Report</h1>
+      <h1 class="text-center">Survey Report</h1>
     </div>
-    
-    <h3 class="text_blue"><i class="fa fa-table"></i> Survey Name: {{survey?.name}}</h3>
-    <div style="float: right;">
-        <a href="javascript:void(0);" (click)="downloadDataset(survey)" class="btn btn-secondary">
-            <i class="fa fa-download"></i> Export Data</a>
+    <div>
+       <h3 class="text_blue"><i class="fa fa-table"></i> Survey Name: {{survey.name}}</h3>
+       <h4>Description:</h4>
+       <p>{{survey.description}}</p>
     </div>
-    <div style="padding-left: 34px;">
-        <h4>Description:</h4>
-        <p>{{survey?.description}}</p>
-        <p style="font-weight: bold;">
-            Answer records: {{survey?.answers?.length}} 
-        </p>
-    </div>
-    
 
-    <div style="background-color: #F2F7FE; padding: 16px; margin-top: 8px; margin-bottom: 16px;" *ngFor="let question of survey?.questions">
+    <div>
+        <p style="font-weight: bold;">Answer records: {{survey.answers.length}}</p>
+    </div>
+
+
+    <div style="background-color: #F2F7FE; padding: 16px; margin-top: 8px; margin-bottom: 16px;" *ngFor="let question of survey.questions">
         <h4><i class="fa fa-question-circle" style="color: #3DA5D9;"></i> Question {{question.question_priority}}: {{question.name}}</h4>
         <p style="padding-left: 32px;">Type: {{question.type}}</p>
         <p style="padding-left: 32px;">
             <span style="font-weight: bold;">Answer record: </span>
             <span>{{generateQuestionResult(question)}}</span>
         </p>
+            
+    
+
     </div>
     <div style="text-align: right;">
         <button type="button" class="btn btn-primary" (click)="back()">
