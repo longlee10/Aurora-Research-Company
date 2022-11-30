@@ -11,6 +11,14 @@ import { ListComponent } from './list/list.component';
 import { ReportComponent } from './report/report.component';
 import { RegisterComponent } from './register/register.component';
 import { TruncatePipe } from '../shared/truncate.pipe';
+// Chart related import
+import { NgxEchartsModule } from 'ngx-echarts';
+import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import { TitleComponent, TooltipComponent, GridComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+
+echarts.use([TitleComponent, TooltipComponent, GridComponent, BarChart, CanvasRenderer]);
 
 const routing = RouterModule.forChild([
   { path: 'auth', component: AuthComponent },
@@ -29,7 +37,8 @@ const routing = RouterModule.forChild([
   imports: [
     CommonModule, 
     FormsModule, 
-    routing
+    routing,
+    NgxEchartsModule.forRoot({ echarts })
   ],
   providers: [
     AuthGuard

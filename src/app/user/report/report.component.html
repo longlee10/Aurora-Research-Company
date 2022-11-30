@@ -27,11 +27,8 @@
         <p style="padding-left: 32px;">Type: {{question.type}}</p>
         <p style="padding-left: 32px;">
             <span style="font-weight: bold;">Answer record: </span>
-            <span>{{generateQuestionResult(question)}}</span>
         </p>
-            
-    
-
+        <div echarts [options]="chartDataMap.get(question._id)" class="chart"></div>
     </div>
     <div style="text-align: right;">
         <button type="button" class="btn btn-primary" (click)="back()">
