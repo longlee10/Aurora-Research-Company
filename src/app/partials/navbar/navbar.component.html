@@ -24,7 +24,8 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/survey/active"><i class="fas fa-lg fa-file-alt"></i> Active Surveys
+        <a class="nav-link" href="/survey/active"
+          ><i class="fas fa-lg fa-file-alt"></i> Active Surveys
         </a>
       </li>
 
@@ -34,8 +35,8 @@
         </a>
       </li>
 
-      <li *ngIf="isLoggedIn" class="nav-item">
-        <a class="nav-link">
+      <li class="nav-item">
+        <a class="nav-link" href="/user/edit">
           <i class="fas fa-lg fa-user"></i> Welcome, {{ user?.displayName }}
         </a>
       </li>
