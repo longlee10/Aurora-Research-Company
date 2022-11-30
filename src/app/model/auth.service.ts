@@ -4,23 +4,19 @@ import { User } from './user.model';
 import { SurveysService } from './surveys.service';
 
 @Injectable()
-export class AuthService
-{
+export class AuthService {
 
-  constructor(private surveysService: SurveysService) {}
+  constructor(private surveysService: SurveysService) { }
 
-  authenticate(user: User): Observable<any>
-  {
+  authenticate(user: User): Observable<any> {
     return this.surveysService.authenticate(user);
   }
 
-  signup(user:User): Observable<any>
-  {
+  signup(user: User): Observable<any> {
     return this.surveysService.signup(user);
   }
 
-  storeUserData(token: any, user: User): void
-  {
+  storeUserData(token: any, user: User): void {
     this.surveysService.storeUserData(token, user);
   }
 
@@ -28,14 +24,16 @@ export class AuthService
     return this.surveysService.loadUser();
   }
 
-  get authenticated(): boolean
-  {
+  get authenticated(): boolean {
     return this.surveysService.loggedIn();
   }
 
-  logout(): Observable<any>
-  {
+  get isAdmin(): boolean {
+    return this.user?.role == 'admin';
+  }
+
+  logout(): Observable<any> {
     return this.surveysService.logout();
   }
-  
+
 }

@@ -8,22 +8,26 @@ import { environment } from "src/environments/environment";
     providedIn: 'root'
 })
 export class AdminService {
-    get authenticated(): boolean {
-        return true;
-    }
 
     private baseURL = environment.backendUri + '/admin';
+    private authToken?: string;
+    private httpOptions =
+        {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+            })
+        };
 
-    headers = new HttpHeaders().set("Content-Type", "application/json");
 
     constructor(private http: HttpClient, public router: Router) { }
 
     getUsers(): Observable<any> {
+        let api_url = this.baseURL + '/user-list';
+        this.loadToken();
 
-        let api = this.baseURL + '/user-list';
-        //let authToken = localStorage.getItem("access_token");
-        //this.headers = this.headers.append("Authorization", 'Bearer ' + authToken || '');
-        return this.http.get(api, { headers: this.headers }).pipe(
+        return this.http.get(api_url, this.httpOptions).pipe(
             map((res) => {
                 return res || {};
             })
@@ -31,10 +35,10 @@ export class AdminService {
     }
 
     getUser(id: number): Observable<any> {
-        let api = this.baseURL + '/user-profile/' + id;
-        //let authToken = localStorage.getItem("access_token");
-        //this.headers = this.headers.append("Authorization", 'Bearer ' + authToken || '');;
-        return this.http.get(api, { headers: this.headers }).pipe(
+        let api_url = this.baseURL + '/user-profile/' + id;
+        this.loadToken();
+
+        return this.http.get(api_url, this.httpOptions).pipe(
             map((res) => {
                 return res || {};
             })
@@ -42,32 +46,43 @@ export class AdminService {
     }
 
     deleteUser(id: any): Observable<any> {
-        let API_URL = this.baseURL + '/delete-user/' + id;
-        return this.http
-            .delete(API_URL, { headers: this.headers });
+        let api_url = this.baseURL + '/delete-user/' + id;
+        this.loadToken();
+
+        return this.http.delete(api_url, this.httpOptions);
     }
 
     updateUser(id: any, data: any): Observable<any> {
-        let API_URL = this.baseURL + '/edit-user/' + id;
-        return this.http.post(API_URL, { headers: this.headers, data });
+        let api_url = this.baseURL + '/edit-user/' + id;
+        this.loadToken();
+
+        return this.http.post(api_url, {data: data}, this.httpOptions);
     }
 
     getSurveys(): Observable<any> {
 
-        let api = this.baseURL + '/survey-list';
-        //let authToken = localStorage.getItem("access_token");
-        //this.headers = this.headers.append("Authorization", 'Bearer ' + authToken || '');
-        return this.http.get(api, { headers: this.headers }).pipe(
+        let api_url = this.baseURL + '/survey-list';
+        this.loadToken();
+
+        return this.http.get(api_url, this.httpOptions).pipe(
             map((res) => {
                 return res || {};
             })
         );
     }
 
-    updateSurveyStatus(id: any, data: any): Observable<any> {
-        let API_URL = this.baseURL + '/update-survey-status/' + id;
-        return this.http.post(API_URL, { headers: this.headers, data });
+    private loadToken(): void {
+        const token = localStorage.getItem('id_token');
+        if (token != null) {
+            this.authToken = token;
+            this.httpOptions.headers = this.httpOptions.headers.set('Authorization', token);
+        }
     }
 
+    updateSurveyStatus(id: any, data: any): Observable<any> {
+        let api_url = this.baseURL + '/update-survey-status/' + id;
+        this.loadToken();
 
+        return this.http.post(api_url, {data: data}, this.httpOptions);
+    }
 }
