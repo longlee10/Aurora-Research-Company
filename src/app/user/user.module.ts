@@ -10,7 +10,8 @@ import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
 import { ReportComponent } from './report/report.component';
 import { RegisterComponent } from './register/register.component';
-import { TruncatePipe } from '../shared/truncate.pipe';
+import { SharedModule } from '../shared/share.module';
+
 // Chart related import
 import { NgxEchartsModule } from 'ngx-echarts';
 import * as echarts from 'echarts/core';
@@ -38,7 +39,8 @@ const routing = RouterModule.forChild([
     CommonModule, 
     FormsModule, 
     routing,
-    NgxEchartsModule.forRoot({ echarts })
+    NgxEchartsModule.forRoot({ echarts }),
+    SharedModule
   ],
   providers: [
     AuthGuard
@@ -50,8 +52,7 @@ const routing = RouterModule.forChild([
     CreateComponent, 
     EditComponent, 
     ReportComponent, 
-    RegisterComponent,
-    TruncatePipe
+    RegisterComponent
   ]
 })
 export class UserModule {}
