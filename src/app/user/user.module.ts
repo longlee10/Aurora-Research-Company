@@ -10,6 +10,7 @@ import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
 import { ReportComponent } from './report/report.component';
 import { RegisterComponent } from './register/register.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routing = RouterModule.forChild([
   { path: 'auth', component: AuthComponent },
@@ -27,6 +28,6 @@ const routing = RouterModule.forChild([
 @NgModule({
   imports: [CommonModule, FormsModule, routing],
   providers: [AuthGuard],
-  declarations: [AuthComponent, UserComponent, ListComponent, CreateComponent, EditComponent, ReportComponent, RegisterComponent]
+  declarations: [AuthComponent, UserComponent, ListComponent, CreateComponent, EditComponent, ReportComponent, RegisterComponent, EditUserComponent]
 })
 export class UserModule {}
