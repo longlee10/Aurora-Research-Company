@@ -1,36 +1,40 @@
 <!-- My Surveys Section -->
-<div class="container">
+<div class="container" style="max-width: 980px;">
   <!-- Title -->
   <div class="container p-3">
-    <h1 class="text-center">My Surveys</h1>
+    <h1 class="text-center aurora-title">My Surveys</h1>
   </div>
 
   <!-- Add Button -->
-  <a href="/user/main/survey/create" class="btn btn-info"><i class="fa fa-plus"></i> Create a new survey</a>
+  <a href="/user/main/survey/create" class="btn btn-info"><i class="fa fa-plus"></i> Create Survey</a>
   <br>
   <br>
   
   <!-- Survey table -->
   <div class="table-responsive">
-    <table class="table table-bordered table-striped table-hover">
-      <thead>
+    <table class="table table-hover">
+      <thead class="text-gray">
         <tr>
-          <th style="width: 20%">Name</th>
-          <th style="width: 60%">Description</th>
-          <th class="text-center" style="width: 20%"></th>
+          <th style="padding-left: 32px; width: 250px;">Name</th>
+          <th >Description</th>
+          <th style="width: 316px;"></th>
         </tr>
       </thead>
       <tbody *ngFor="let survey of surveys">
         <tr>
-          <td><a href="javascript:void(0);" [routerLink]="['/user/main/survey/report', survey._id]">{{ survey.name }}</a></td>
-          <td><a href="javascript:void(0);" [routerLink]="['/user/main/survey/report', survey._id]">{{ survey.description | truncate:200:'...'}}</a></td>
-          <td class="text-center">
-            <a href="javascript:void(0);" [routerLink]="['/user/main/survey/edit', survey._id]"><i class="fas fa-edit"></i> Edit</a>
-            |
-            <a href="javascript:void(0);" (click)="deleteSurvey(survey)"><i class="fas fa-trash-alt"></i> Delete</a>
+          <td style="padding-left: 32px;">{{ survey.name }}</td>
+          <td class="">{{ survey.description }}</td>
+          <td class="text-right">
+
+            <a href="javascript:void(0);" [routerLink]="['/user/main/survey/edit', survey._id]" class="btn btn-primary btn-margin">
+              <i class="fas fa-edit"></i> Edit</a> 
+            <a href="javascript:void(0);" (click)="deleteSurvey(survey)" class="btn btn-secondary btn-margin"> 
+              <i class="fas fa-trash-alt"></i> Delete</a>
+            <a href="javascript:void(0);" [routerLink]="['/user/main/survey/report', survey._id]" class="btn btn-info btn-margin">
+              <i class="far fa-file-alt"></i> Report</a>
           </td>
         </tr>
       </tbody>
     </table>
-</div>
+    <hr style="height: 3px; background-color: #44abe7"/>
 </div>

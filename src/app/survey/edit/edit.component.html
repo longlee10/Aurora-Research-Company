@@ -3,17 +3,12 @@
   
   <!-- Title -->
   <div class="container p-3">
-    <h1 class="text-center aurora-title">Edit Survey</h1>
-  </div>
-
-  <!-- Error Message -->
-  <div class="bg-danger mt-2 p-2 text-center text-white" *ngIf="errorMessage != null">
-    {{ errorMessage }}
+    <h1 class="text-center">Edit a survey</h1>
   </div>
 
   <!-- Servey Form -->
   <form #f="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
-    <div class="form-group question-bg">
+    <div class="form-group">
       <label for="NameTextField">Name</label>
       <input
         type="text"
@@ -25,7 +20,7 @@
       />
     </div>
 
-    <div class="form-group question-bg">
+    <div class="form-group">
       <label for="DescriptionTextField">Description</label>
       <input
         type="text"
@@ -37,7 +32,7 @@
       />
     </div>
 
-    <div class="form-group question-bg">
+    <div class="form-group">
       <label for="StartTimeTextField">Start Time</label>
       <input type="date"              
         class="form-control"
@@ -47,7 +42,7 @@
       [(ngModel)]="startTime" />
     </div>
 
-    <div class="form-group question-bg">
+    <div class="form-group">
       <label for="EndTimeTextField">End Time</label>
       <input type="date"              
         class="form-control"
@@ -57,8 +52,8 @@
     </div>
 
     <div *ngFor="let question of survey.questions">
-      <div class="form-group question-bg">
-          <label for="Question{{ question.question_priority }}TextField"><i class="fa fa-question-circle" style="color: #2393cb;"></i> Question {{ question.question_priority }} (Type : {{ question.type }})</label>
+      <div class="form-group">
+          <label for="Question{{ question.question_priority }}TextField">Question {{ question.question_priority }} (Type : {{ question.type }})</label>
           <input
             type="text"
             class="form-control"
@@ -93,7 +88,7 @@
           </button>
         </div>
         <div class="col">
-          <a href="/user/main/survey/list" class="btn btn-secondary btn-block"><i class="fa fa-undo"></i> Cancel</a>
+          <a href="/survey/list" class="btn btn-secondary btn-block"><i class="fa fa-undo"></i> Cancel</a>
         </div>
       </div>
     </div>
