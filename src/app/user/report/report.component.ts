@@ -63,7 +63,12 @@ export class ReportComponent implements OnInit {
   }
 
   private createBarChartData(categoryData: string[], valueData: number[]): any {
+    const totalRespondents = valueData.reduce((acc, current) => acc + current, 0);
     return {
+      title: {
+        text: `Number of respondents: ${totalRespondents}`,
+        left: 'center'
+      },
       tooltip: {
         trigger: 'item'
       },
@@ -98,7 +103,7 @@ export class ReportComponent implements OnInit {
         .map(index => {
           const from = min + index * binSize;
           const to = min + (index + 1) * binSize;
-          return `${from.toFixed(1)} - ${to.toFixed(1)}`;
+          return `${from.toFixed(1)}-${to.toFixed(1)}`;
         });
       // Classified to bins
       const bins = options.reduce((acc, option) => {   
