@@ -18,9 +18,12 @@
                 <td>{{user.displayName}}</td>
                 <td>{{user.role}}</td>
                 <td class="text-center">
-                    <a  href="javascript:void(0);" [routerLink]="['edit-user', user._id ]"> Edit </a>
-                    |
-                    <a  href="javascript:void(0);" (click)="deleteUser(user._id, i)"> Delete </a>
+                    <a href="javascript:void(0);" [routerLink]="['edit-user', user._id ]"
+                        class="btn btn-primary btn-margin">
+                        <i class="fas fa-edit"></i> Edit</a>
+                    <a href="javascript:void(0);" (click)="deleteUser(user._id, i)"
+                        class="btn btn-secondary btn-margin">
+                        <i class="fas fa-trash-alt"></i> Delete</a>
                 </td>
             </tr>
         </tbody>
