@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/model/auth.service';
 export class CreateComponent implements OnInit {
 
   public survey = new Survey();
+  public errorMessage? : string;
 
   constructor(private authService: AuthService, private surveyService: SurveysService, private router: Router) { }
 
@@ -21,8 +22,17 @@ export class CreateComponent implements OnInit {
   }
 
   onSubmit() {
-    this.surveyService.addSurvey(this.survey)
-    .subscribe(success => this.router.navigate(["/user/main/survey/list"]));
+    if (this.survey.start_time == undefined) {
+      this.errorMessage = "Please enter a start time.";
+    } else if (this.survey.end_time == undefined) {
+      this.errorMessage = "Please enter a end time.";
+    } else if (this.survey.start_time > this.survey.end_time) {
+      this.errorMessage = "The start time is larger than the end time.";
+    } else {
+      this.errorMessage = undefined;
+      this.surveyService.addSurvey(this.survey)
+      .subscribe(success => this.router.navigate(["/user/main/survey/list"]));
+    }
   }
 
   onNewYesNoQuestion() {

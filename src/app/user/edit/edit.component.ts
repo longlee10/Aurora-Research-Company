@@ -15,6 +15,7 @@ export class EditComponent implements OnInit {
   public survey = new Survey();
   public startTime = "";
   public endTime = "";
+  public errorMessage? : string;
 
   constructor(private surveryService: SurveysService, private router: Router, private _Activatedroute:ActivatedRoute) { }
 
@@ -38,9 +39,14 @@ export class EditComponent implements OnInit {
     // Date conversion
     this.survey.start_time = new Date(this.startTime);
     this.survey.end_time = new Date(this.endTime);
-    // Submit
-    this.surveryService.editSurvey(this.survey)
-    .subscribe(success => this.router.navigate(["/user/main/survey/list"]));
+    if (this.survey.start_time > this.survey.end_time) {
+      this.errorMessage = "The start time is larger than the end time.";
+    } else {
+      this.errorMessage = undefined;
+      // Submit
+      this.surveryService.editSurvey(this.survey)
+      .subscribe(success => this.router.navigate(["/user/main/survey/list"]));
+    }
   }
 
   onNewYesNoQuestion() {

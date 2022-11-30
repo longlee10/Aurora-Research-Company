@@ -19,9 +19,11 @@ export class ListComponent implements OnInit {
   }
 
   deleteSurvey(survey: Survey) {
-    this.surveryService.deleteSurvey(survey._id!)
-    .pipe(mergeMap(success => this.surveryService.getSurveys(false)))
-    .subscribe(data => this.surveys = data);
+    if(confirm("Are you sure?")) {
+      this.surveryService.deleteSurvey(survey._id!)
+      .pipe(mergeMap(success => this.surveryService.getSurveys(false)))
+      .subscribe(data => this.surveys = data);
+    }
   }
 
 }
