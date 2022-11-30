@@ -1,0 +1,97 @@
+<!-- Create Survey Section -->
+<div class="container" style="max-width: 540px;">
+
+  <!-- Title -->
+  <div class="container p-3">
+    <h1 class="text-center">Create a survey</h1>
+  </div>
+
+  <!-- Servey Form -->
+  <form #f="ngForm" (ngSubmit)="onSubmit()"  ngNativeValidate>
+    <div class="form-group">
+      <label for="NameTextField">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="NameTextField"
+        required
+        name="name"
+        [(ngModel)]="survey.name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="DescriptionTextField">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="DescriptionTextField"
+        required
+        name="description"
+        [(ngModel)]="survey.description"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="StartTimeTextField">Start Time</label>
+      <input type="date"              
+        class="form-control"
+      id="StartTimeTextField"
+      required
+      name="start_time"
+      [(ngModel)]="survey.start_time" />
+    </div>
+
+    <div class="form-group">
+      <label for="EndTimeTextField">End Time</label>
+      <input type="date"              
+        class="form-control"
+      id="EndTimeTextField"
+      required
+      name="end_time"
+      [(ngModel)]="survey.end_time" />
+    </div>
+
+    <div *ngFor="let question of survey.questions">
+      <div class="form-group">
+          <label for="Question{{ question.question_priority }}TextField">Question {{ question.question_priority }} (Type : {{ question.type }})</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Question{{ question.question_priority }}TextField"
+            required
+            name="question.name.{{ question.question_priority }}"
+            [(ngModel)]="question.name"
+          />
+          <!-- Question Management Buttons -->
+          <button type="button" class="btn" (click)="onMoveToPreviousQuestion(question)"><i class="fas fa-arrow-up"></i></button>
+          <button type="button" class="btn" (click)="onMoveToNextQuestion(question)"><i class="fas fa-arrow-down"></i></button>
+          <button type="button" class="btn" (click)="onRemoveQuestion(question)"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>
+    <!-- Question Buttons -->
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-outline-secondary" (click)="onNewNumberQuestion()">
+        Add a question answering a number
+      </button>
+      <button type="button" class="btn btn-outline-secondary" (click)="onNewYesNoQuestion()">
+        Add a question answering yes or no
+      </button>
+    </div>
+    <br>
+    <br>
+    <!-- Form control Buttons -->
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-info btn-block">
+            <i class="fa fa-plus"></i> Create
+          </button>
+        </div>
+        <div class="col">
+          <a href="/survey/list" class="btn btn-secondary btn-block"><i class="fa fa-undo"></i> Cancel</a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
