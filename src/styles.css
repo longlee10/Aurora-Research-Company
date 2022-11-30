@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+.aurora-title {
+    color:#2e5177;
+    padding-top: 12px;
+}
+
+.aurora-bg-aliceblue{
+    background-color: aliceblue; 
+    padding: 32px 0px 0px 0px;
+}
+
+.text-gray{
+    color: white;
+    background-color: #1a7cb5;
+
+}
+
+.padding-field{
+    padding-left: 26px;
+    padding-right: 26px;
+}
+
+.btn-margin{
+    margin-left: 8px;
+}
+
+.question-bg{
+    background-color: #F2F7FE; 
+    padding: 16px 16px 12px 16px; 
+    margin-top: 8px; 
+    margin-bottom: 12px;
+}
