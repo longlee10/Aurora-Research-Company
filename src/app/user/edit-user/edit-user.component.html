@@ -8,14 +8,19 @@
   <!-- Register Form -->
   <div class="row">
     <div class="col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-sm-8 offset-sm-1">
-      <form autocomplete="off" #form="ngForm" ngNativeValidate>
+      <form
+        autocomplete="off"
+        #form="ngForm"
+        (ngSubmit)="save(form)"
+        ngNativeValidate
+      >
         <fieldset class="form-group">
-          <label for="username">Email</label>
+          <label for="email">Email</label>
           <input
             type="email"
             class="form-control"
             name="email"
-            placeholder="Enter Email"
+            [(ngModel)]="user.email"
             id="email"
             autofocus
             autocomplete="off"
@@ -28,7 +33,7 @@
             type="password"
             class="form-control"
             name="password"
-            placeholder="Enter Password"
+            [(ngModel)]="user.password"
             id="password"
             autocomplete="off"
           />
@@ -40,7 +45,7 @@
             type="text"
             class="form-control"
             name="contact_number"
-            placeholder="Enter Contact Number"
+            [(ngModel)]="user.contact_number"
             id="contactnumber"
             autocomplete="off"
           />
@@ -52,7 +57,7 @@
             type="text"
             class="form-control"
             name="displayName"
-            placeholder="Enter Display Name"
+            [(ngModel)]="user.displayName"
             id="displayName"
             autocomplete="off"
           />

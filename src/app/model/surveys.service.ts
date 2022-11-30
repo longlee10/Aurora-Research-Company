@@ -111,4 +111,10 @@ export class SurveysService {
     }
   }
 
+  updateUser(user: User): Observable<User>
+  {
+    this.loadToken();
+    return this.http.post<User>(`${this.baseURL}user/edit/${user._id}`, user, this.httpOptions);
+  }
+
 }
