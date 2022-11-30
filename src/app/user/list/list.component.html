@@ -23,11 +23,11 @@
       <tbody *ngFor="let survey of surveys">
         <tr>
           <td><a href="javascript:void(0);" [routerLink]="['/user/main/survey/report', survey._id]">{{ survey.name }}</a></td>
-          <td><a href="javascript:void(0);" [routerLink]="['/user/main/survey/report', survey._id]">{{ survey.description }}</a></td>
+          <td><a href="javascript:void(0);" [routerLink]="['/user/main/survey/report', survey._id]">{{ survey.description | truncate:200:'...'}}</a></td>
           <td class="text-center">
-            <a href="javascript:void(0);" [routerLink]="['/user/main/survey/edit', survey._id]">Edit</a>
+            <a href="javascript:void(0);" [routerLink]="['/user/main/survey/edit', survey._id]"><i class="fas fa-edit"></i> Edit</a>
             |
-            <a href="javascript:void(0);" (click)="deleteSurvey(survey)">Delete</a>
+            <a href="javascript:void(0);" (click)="deleteSurvey(survey)"><i class="fas fa-trash-alt"></i> Delete</a>
           </td>
         </tr>
       </tbody>
