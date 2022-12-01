@@ -21,7 +21,7 @@
           <tr>
             <td><a href="javascript:void(0);" [routerLink]="['/survey/answer', survey._id]">{{ survey.name }}</a></td>
             
-            <td > {{ survey.description }}</td>
+            <td> {{ survey.description | truncate:200:'...' }}</td>
             <td class="text-center">
               <a class="btn btn-info" href="javascript:void(0);" [routerLink]="['/survey/answer', survey._id]">
                 <i class="fa fa-play"></i> Do it

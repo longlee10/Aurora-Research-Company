@@ -6,6 +6,11 @@
     <h1 class="text-center aurora-title">Edit Survey</h1>
   </div>
 
+  <!-- Error Message -->
+  <div class="bg-danger mt-2 p-2 text-center text-white" *ngIf="errorMessage != null">
+    {{ errorMessage }}
+  </div>
+
   <!-- Servey Form -->
   <form #f="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
     <div class="form-group question-bg">
