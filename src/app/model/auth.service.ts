@@ -28,14 +28,12 @@ export class AuthService
     return this.surveysService.loadUser();
   }
 
-  get authenticated(): boolean
-  {
+  get authenticated(): boolean {
     return this.surveysService.loggedIn();
   }
 
-  logout(): Observable<any>
-  {
-    return this.surveysService.logout();
+  logout(): void {
+    this.surveysService.logout();
   }
   
 }
