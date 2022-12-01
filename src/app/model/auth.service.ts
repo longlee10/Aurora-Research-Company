@@ -31,9 +31,9 @@ export class AuthService {
   get isAdmin(): boolean {
     return this.user?.role == 'admin';
   }
-
-  logout(): Observable<any> {
-    return this.surveysService.logout();
+  
+  logout(): void {
+    this.surveysService.logout();
   }
 
 }

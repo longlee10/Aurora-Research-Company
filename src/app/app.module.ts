@@ -47,7 +47,7 @@ export class AppModule {
   constructor(private auth: AuthService) {
     // Logout if the token expired, a better solution should be examined later
     if(!auth.authenticated) {
-      auth.logout().subscribe();
+      auth.logout();
     }
   }
  }

@@ -76,11 +76,10 @@ export class SurveysService {
     this.authToken = token;
   }
 
-  logout(): Observable<any>
+  logout(): void
   {
     this.authToken = undefined;
     localStorage.clear();
-    return this.http.post<any>(`${this.baseURL}/user/logout`, this.httpOptions);
   }
 
   loggedIn(): boolean
