@@ -5,6 +5,7 @@ import { Answer, Survey } from './survey.model';
 import { environment } from '../../environments/environment';
 import { User } from './user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class SurveysService {
@@ -21,7 +22,7 @@ export class SurveysService {
     })
   };
 
-  constructor(private http: HttpClient, private jwtService: JwtHelperService) {
+  constructor(private http: HttpClient, private jwtService: JwtHelperService, private auth: AuthService) {
     this.loadUser();
     this.loadToken();
    }
@@ -113,8 +114,9 @@ export class SurveysService {
 
   updateUser(user: User): Observable<User>
   {
+    user._id == this.auth.user?._id;
     this.loadToken();
-    return this.http.post<User>(`${this.baseURL}user/edit/${user._id}`, user, this.httpOptions);
+    return this.http.post<User>(`${this.baseURL}/user/edit/${user._id}`, user, this.httpOptions);
   }
 
 }
