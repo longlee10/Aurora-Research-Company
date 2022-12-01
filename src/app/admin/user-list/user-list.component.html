@@ -21,9 +21,13 @@
                     <a href="javascript:void(0);" [routerLink]="['edit-user', user._id ]"
                         class="btn btn-primary btn-margin">
                         <i class="fas fa-edit"></i> Edit</a>
-                    <a href="javascript:void(0);" (click)="deleteUser(user._id, i)"
-                        class="btn btn-secondary btn-margin">
-                        <i class="fas fa-trash-alt"></i> Delete</a>
+
+                    <a *ngIf='user.isActive' class="btn btn-warning btn-margin" (click)="changeUserStatus(user._id, !user.isActive)">
+                        <i class="fas fa-user-times"> Deactivate</i>
+                    </a>
+                    <a *ngIf='!user.isActive' class="btn btn-info btn-margin" (click)="changeUserStatus(user._id, !user.isActive)">
+                        <i class="fas fa-user-check"> Activate</i>
+                    </a>
                 </td>
             </tr>
         </tbody>

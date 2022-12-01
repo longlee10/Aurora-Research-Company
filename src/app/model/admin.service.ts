@@ -20,7 +20,6 @@ export class AdminService {
             })
         };
 
-
     constructor(private http: HttpClient, public router: Router) { }
 
     getUsers(): Observable<any> {
@@ -56,7 +55,7 @@ export class AdminService {
         let api_url = this.baseURL + '/edit-user/' + id;
         this.loadToken();
 
-        return this.http.post(api_url, {data: data}, this.httpOptions);
+        return this.http.post(api_url, { data: data }, this.httpOptions);
     }
 
     getSurveys(): Observable<any> {
@@ -79,10 +78,23 @@ export class AdminService {
         }
     }
 
+    updateUserStatus(id: any, data: any): Observable<any> {
+        let api_url = this.baseURL + '/update-user-status/' + id;
+        this.loadToken();
+
+        return this.http.post(api_url, { data: data }, this.httpOptions);
+    }
+
     updateSurveyStatus(id: any, data: any): Observable<any> {
         let api_url = this.baseURL + '/update-survey-status/' + id;
         this.loadToken();
 
-        return this.http.post(api_url, {data: data}, this.httpOptions);
+        return this.http.post(api_url, { data: data }, this.httpOptions);
+    }
+
+    updateSurveysStatus(author: any, data: any): Observable<any> {
+        let api_url = this.baseURL + '/update-surveys-status/' + author;
+        this.loadToken();
+        return this.http.post(api_url, { data: data }, this.httpOptions);
     }
 }
