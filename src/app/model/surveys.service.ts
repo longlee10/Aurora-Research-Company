@@ -70,11 +70,13 @@ export class SurveysService {
     return this.http.post<any>(`${this.baseURL}/user/register`, user, this.httpOptions);
   }
   
-  storeUserData(token: any, user: User): void
-  {
+  storeTokenData(token: any): void {
     localStorage.setItem('id_token', 'Bearer ' + token);
-    localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
+  }
+
+  storeUserData(user: User): void {
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   logout(): Observable<any>
@@ -112,11 +114,10 @@ export class SurveysService {
     }
   }
 
-  updateUser(user: User): Observable<User>
+  updateUser(user: User): Observable<any>
   {
-    user._id == this.auth.user?._id;
     this.loadToken();
-    return this.http.post<User>(`${this.baseURL}/user/edit/${user._id}`, user, this.httpOptions);
+    return this.http.post(`${this.baseURL}/user/edit`, user, this.httpOptions);
   }
 
 }

@@ -14,12 +14,13 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routing = RouterModule.forChild([
   { path: 'auth', component: AuthComponent },
+  {path: 'register', component: RegisterComponent},
+  { path: 'edit', component: EditUserComponent, canActivate: [AuthGuard]},
   { path: 'main', component: UserComponent, canActivate: [AuthGuard],
    children: [
     {path: 'survey/list', component: ListComponent, canActivate: [AuthGuard]},
     {path: 'survey/create', component: CreateComponent, canActivate: [AuthGuard]},
     {path: 'survey/edit/:id', component: EditComponent, canActivate: [AuthGuard]},
-    {path: 'user/edit/:id', component: EditUserComponent, canActivate: [AuthGuard]},
     {path: 'survey/report/:id', component: ReportComponent, canActivate: [AuthGuard]},
     {path: '**', redirectTo: 'survey/list' }]
   },
