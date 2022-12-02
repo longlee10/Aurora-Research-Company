@@ -2,19 +2,19 @@
 <div class="container">
     <!-- Title -->
     <div class="container p-3">
-        <h1 class="text-center">User List</h1>
+        <h1 class="text-center aurora-title">User List</h1>
     </div>
 
     <table class="table">
-        <thead>
-            <th>Username</th>
+        <thead class="text-gray">
+            <th style="padding-left: 32px;">Username</th>
             <th>Display Name</th>
             <th>Role</th>
-            <th class="text-center" scope="col">Action</th>
+            <th class="text-center" scope="col" style="width: 280px;">Action</th>
         </thead>
         <tbody>
             <tr *ngFor="let user of Users; let i = index">
-                <td>{{user.username}}</td>
+                <td style="padding-left: 32px;">{{user.username}}</td>
                 <td>{{user.displayName}}</td>
                 <td>{{user.role}}</td>
                 <td class="text-center">
@@ -22,11 +22,11 @@
                         class="btn btn-primary btn-margin">
                         <i class="fas fa-edit"></i> Edit</a>
 
-                    <a *ngIf='user.isActive' class="btn btn-warning btn-margin" (click)="changeUserStatus(user._id, !user.isActive)">
-                        <i class="fas fa-user-times"> Deactivate</i>
+                    <a *ngIf='user.isActive' class="btn btn-warning btn-margin btn-enable" (click)="changeUserStatus(user._id, !user.isActive)">
+                        <i class="fas fa-user-times"></i> Deactivate
                     </a>
-                    <a *ngIf='!user.isActive' class="btn btn-info btn-margin" (click)="changeUserStatus(user._id, !user.isActive)">
-                        <i class="fas fa-user-check"> Activate</i>
+                    <a *ngIf='!user.isActive' class="btn btn-info btn-margin btn-enable" (click)="changeUserStatus(user._id, !user.isActive)">
+                        <i class="fas fa-user-check"></i> Activate
                     </a>
                 </td>
             </tr>

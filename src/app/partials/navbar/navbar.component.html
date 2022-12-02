@@ -38,13 +38,13 @@
 
       <li *ngIf="isLoggedIn && isAdmin" class="nav-item">
         <a class="nav-link" href="/admin/main">
-          <i class="fa fa-lg fa-cubes"></i> Admin
+          <i class="fa fa-lg fa-users"></i> Admin
         </a>
       </li>
       
       <li *ngIf="isLoggedIn" class="nav-item">
         <a class="nav-link">
-          <i class="fas fa-lg fa-user"></i> Welcome, {{ user?.displayName }}
+          <i class="fas fa-lg fa-user-circle"></i> Welcome, {{ user?.displayName }}
         </a>
       </li>
 
