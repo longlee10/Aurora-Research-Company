@@ -33,18 +33,11 @@
                             name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options" />
                     </div>
                     <div class="padding-field" *ngIf="question.type=='yesno'">
-                        <div class="form-check form-check-inline">
-                            <input type="radio" [attr.name]="answer.responses[i].question_id" class="form-check-input"
-                                id="question{{ question.question_priority }}_true"
-                                [(ngModel)]="answer.responses[i].options" value="yes" ng-required="true" required>
-                            <label for="question{{ question.question_priority }}_true">Yes</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" [attr.name]="answer.responses[i].question_id" class="form-check-input"
-                                id="question{{ question.question_priority }}_false"
-                                [(ngModel)]="answer.responses[i].options" value="no" ng-required="true" required>
-                            <label for="question{{ question.question_priority }}_false">No</label><br>
-                        </div>
+                        <select [(ngModel)]="answer.responses[i].options" required>
+                            <option></option>
+                            <option>yes</option>
+                            <option>no</option>
+                        </select>
                     </div>
                 </div>
             </div>
