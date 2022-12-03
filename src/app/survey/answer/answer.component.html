@@ -2,7 +2,7 @@
     <!-- Survey Header part-->
     <div class="container p-3">
         <h1 class="text-center aurora-title">Survey Response</h1>
-    </div>  
+    </div>
     <div>
         <h3 class="text_blue"><i class="fa fa-table"></i> Survey Name: {{survey.name}}</h3>
         <ul>
@@ -25,7 +25,7 @@
             <div>
                 <div class="form-group" *ngIf="answer.responses!=undefined">
                     <label style="font-size: 14pt;" for="Question{{ question.question_priority }}TextField">
-                        <i class="fa fa-question-circle" style="color: #2393cb;"></i>  Question {{
+                        <i class="fa fa-question-circle" style="color: #2393cb;"></i> Question {{
                         question.question_priority }}
                         : {{question.name}} </label>
                     <div class="padding-field" *ngIf="question.type=='number'">
@@ -33,18 +33,11 @@
                             name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options" />
                     </div>
                     <div class="padding-field" *ngIf="question.type=='yesno'">
-                        <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" id="question{{ question.question_priority }}"
-                                name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options"
-                                value="yes" ng-required="true">
-                            <label for="question{{ question.question_priority }}">Yes</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" id="question{{ question.question_priority }}"
-                                name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options"
-                                value="no" ng-required="true">
-                            <label for="question{{ question.question_priority }}">No</label><br>
-                        </div>
+                        <select [(ngModel)]="answer.responses[i].options" required>
+                            <option></option>
+                            <option>yes</option>
+                            <option>no</option>
+                        </select>
                     </div>
                 </div>
             </div>
