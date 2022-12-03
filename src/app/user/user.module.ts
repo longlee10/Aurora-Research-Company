@@ -18,12 +18,17 @@ import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import { TitleComponent, TooltipComponent, GridComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditPasswordComponent } from './edit-password/edit-password.component';
 
 echarts.use([TitleComponent, TooltipComponent, GridComponent, BarChart, CanvasRenderer]);
 
 const routing = RouterModule.forChild([
   { path: 'auth', component: AuthComponent },
-  { path: 'main', component: UserComponent, canActivate: [AuthGuard],
+    {path: 'edit-user', component: EditUserComponent, canActivate: [AuthGuard]},
+   {path: 'edit-password', component: EditPasswordComponent, canActivate: [AuthGuard]},
+   {path: 'register', component: RegisterComponent},
+   {path: 'main', component: UserComponent, canActivate: [AuthGuard],
    children: [
     {path: 'survey/list', component: ListComponent, canActivate: [AuthGuard]},
     {path: 'survey/create', component: CreateComponent, canActivate: [AuthGuard]},
@@ -52,7 +57,9 @@ const routing = RouterModule.forChild([
     CreateComponent, 
     EditComponent, 
     ReportComponent, 
-    RegisterComponent
+    RegisterComponent,
+    EditUserComponent,
+    EditPasswordComponent
   ]
 })
 export class UserModule {}

@@ -25,7 +25,8 @@ export class AuthComponent implements OnInit
     // perform authentication
     this.auth.authenticate(this.user).subscribe({
       next: data => {
-        this.auth.storeUserData(data.token, data.user);
+        this.auth.storeTokenData(data.token);
+        this.auth.storeUserData(data.user);
         this.router.navigateByUrl('user/main');
         this.errorMessage = "";
       },
