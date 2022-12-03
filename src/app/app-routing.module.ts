@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'survey/answer/:id', component: AnswerComponent},
   {path: 'user/edit-password', component: EditPasswordComponent},
   {path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule)},
+  {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
   {path: '', redirectTo: 'landing', pathMatch: 'full' },
   {path: '**', redirectTo: 'landing', pathMatch: 'full' }
 ];

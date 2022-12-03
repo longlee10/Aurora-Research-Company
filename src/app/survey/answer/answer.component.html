@@ -1,41 +1,38 @@
-<div class="container" align="center">
+<div class="container" style="max-width:640px;">
     <!-- Survey Header part-->
-    <div class="container p-1">
-        <h1 class="text-center">Response</h1>
+    <div class="container p-3">
+        <h1 class="text-center aurora-title">Survey Response</h1>
+    </div>  
+    <div>
+        <h3 class="text_blue"><i class="fa fa-table"></i> Survey Name: {{survey.name}}</h3>
+        <ul>
+            <li>Description: {{survey.description}}</li>
+            <li>Creator: {{survey.author}}</li>
+            <li>Start time: {{survey.start_time| date:'yyyy/MM/dd':"+0000"}}</li>
+            <li>End time: {{survey.end_time | date:'yyyy/MM/dd':"+0000"}}</li>
+        </ul>
     </div>
-    <table>
-        <tr>
-            <td>Survey title: </td>
-            <td>{{survey.name}}</td>
-        </tr>
-        <tr>
-            <td>Description: </td>
-            <td colspan="3">{{survey.description}}</td>
-        </tr>
-        <tr>
-            <td>Creator: </td>
-            <td>{{survey.author}}</td>
-            <td>End time: </td>
-            <td>{{survey.end_time | date:'short'}}</td>
-        </tr>
-    </table>
+    <div align="right">
+        <a href="mailto:admin@aurora-research.ca">Report this survey</a>
+    </div>
     <span style="width: 80%">
         <hr />
     </span>
 
     <!-- Question Section -->
     <form #f="ngForm" (ngSubmit)="onSubmitAnswer()" ngNativeValidate>
-        <div *ngFor="let question of survey.questions; let i = index">
+        <div class="question-bg" *ngFor="let question of survey.questions; let i = index">
             <div>
                 <div class="form-group" *ngIf="answer.responses!=undefined">
-                    <label for="Question{{ question.question_priority }}TextField">Question {{
+                    <label style="font-size: 14pt;" for="Question{{ question.question_priority }}TextField">
+                        <i class="fa fa-question-circle" style="color: #2393cb;"></i>  Question {{
                         question.question_priority }}
-                        : {{question.name}}</label>
-                    <div *ngIf="question.type=='number'">
+                        : {{question.name}} </label>
+                    <div class="padding-field" *ngIf="question.type=='number'">
                         <input type="number" class="form-control" id="question{{ question.question_priority }}" required
                             name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options" />
                     </div>
-                    <div *ngIf="question.type=='yesno'">
+                    <div class="padding-field" *ngIf="question.type=='yesno'">
                         <div class="form-check form-check-inline">
                             <input type="radio" class="form-check-input" id="question{{ question.question_priority }}"
                                 name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options"

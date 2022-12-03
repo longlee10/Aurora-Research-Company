@@ -7,6 +7,7 @@ export class User {
         public displayName?: string,
         public password?: string,
         public role?: string,   // can either be user /admin
+        public isActive?: boolean
     ) { }
 }
 

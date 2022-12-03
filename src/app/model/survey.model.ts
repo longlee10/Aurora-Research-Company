@@ -18,7 +18,7 @@ export class Question {
         public _id?: string,
         public question_priority?: Number, 
         public name?: string,    
-        public type?: string,   // yes/no, true/false, radio buttons, dropdown list 
+        public type?: string,   
         public options?: string[]
     ){}
 }

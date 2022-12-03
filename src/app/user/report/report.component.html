@@ -3,35 +3,36 @@
   
     <!-- Title -->
     <div class="container p-3">
-      <h1 class="text-center">Survey Report</h1>
-    </div>
-    <div>
-       <h3 class="text_blue"><i class="fa fa-table"></i> Survey Name: {{survey?.name}}</h3>
-       <h4>Description:</h4>
-       <p>{{survey?.description}}</p>
+      <h1 class="text-center aurora-title">Survey Report</h1>
     </div>
 
-    <div>
-        <p style="font-weight: bold;">Answer records: {{survey?.answers?.length}}</p>
+    <h3 class="text_blue"><i class="fa fa-table"></i> Survey Name: {{survey?.name}}</h3>
+    
+    <!-- Export data button -->
+    <div style="float: right;">
+        <a href="javascript:void(0);" (click)="downloadDataset()" class="btn btn-secondary">
+            <i class="fa fa-download"></i> Export Data</a>
     </div>
 
+    <div style="padding-left: 34px;">
+        <h4>Description:</h4>
+        <p>{{survey?.description}}</p>
+        <p style="font-weight: bold;">
+            Number of respondents: {{survey?.answers?.length}} 
+        </p>
+    </div>
 
+    <!-- Display statistics -->
     <div style="background-color: #F2F7FE; padding: 16px; margin-top: 8px; margin-bottom: 16px;" *ngFor="let question of survey?.questions">
         <h4><i class="fa fa-question-circle" style="color: #3DA5D9;"></i> Question {{question.question_priority}}: {{question.name}}</h4>
-        <p style="padding-left: 32px;">Type: {{question.type}}</p>
-        <p style="padding-left: 32px;">
-            <span style="font-weight: bold;">Answer record: </span>
-            <span>{{generateQuestionResult(question)}}</span>
-        </p>
-            
-    
-
+        <br>
+        <br>
+        <div echarts [options]="chartDataMap.get(question._id)" class="chart"></div>
     </div>
+
     <div style="text-align: right;">
         <button type="button" class="btn btn-primary" (click)="back()">
             <i class="fa fa-undo"></i> Back</button>
     </div>
   
-    <!-- Servey Report -->
-   
 </div>

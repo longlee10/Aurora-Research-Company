@@ -13,7 +13,8 @@ export class NavbarComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
   logout() {
-    this.authService.logout().subscribe(success => this.router.navigate(["/"]));
+    this.authService.logout();
+    this.router.navigate(["/"]);
   }
 
   get user(): User | undefined
@@ -24,5 +25,10 @@ export class NavbarComponent {
   get isLoggedIn(): boolean
   {
     return this.authService.authenticated;
+  }
+
+  get isAdmin(): boolean
+  {
+    return this.authService.isAdmin;
   }
 }
