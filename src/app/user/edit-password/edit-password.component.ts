@@ -30,7 +30,6 @@ export class EditPasswordComponent implements OnInit {
   {
     this.service.updatePassword(this.user)
     .subscribe(data => {
-      this.auth.storeUserData(data.user);
       this.router.navigate(["/landing"]) 
   });
   }
