@@ -120,4 +120,10 @@ export class SurveysService {
     return this.http.post(`${this.baseURL}/user/edit`, user, this.httpOptions);
   }
 
+  updatePassword(user: User): Observable<any>
+  {
+    this.loadToken();
+    return this.http.post(`${this.baseURL}/user/edit-password`, user, this.httpOptions);
+  }
+
 }

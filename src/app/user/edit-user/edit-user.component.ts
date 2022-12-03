@@ -23,6 +23,7 @@ export class EditUserComponent {
     this.user.email = auth.user?.email;
     this.user.contact_number = auth.user?.contact_number;
     this.user.displayName = auth.user?.displayName;
+    //this.user.password = auth.user?.password;
   }
 
   save(form: NgForm):void

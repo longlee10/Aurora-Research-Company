@@ -11,12 +11,14 @@ import { ListComponent } from './list/list.component';
 import { ReportComponent } from './report/report.component';
 import { RegisterComponent } from './register/register.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditPasswordComponent } from './edit-password/edit-password.component';
 
 const routing = RouterModule.forChild([
-  { path: 'auth', component: AuthComponent },
+  {path: 'auth', component: AuthComponent },
   {path: 'register', component: RegisterComponent},
-  { path: 'edit', component: EditUserComponent, canActivate: [AuthGuard]},
-  { path: 'main', component: UserComponent, canActivate: [AuthGuard],
+  {path: 'edit', component: EditUserComponent, canActivate: [AuthGuard]},
+  {path: 'edit-password', component: EditPasswordComponent, canActivate: [AuthGuard]},
+  {path: 'main', component: UserComponent, canActivate: [AuthGuard],
    children: [
     {path: 'survey/list', component: ListComponent, canActivate: [AuthGuard]},
     {path: 'survey/create', component: CreateComponent, canActivate: [AuthGuard]},
@@ -30,6 +32,6 @@ const routing = RouterModule.forChild([
 @NgModule({
   imports: [CommonModule, FormsModule, routing],
   providers: [AuthGuard],
-  declarations: [AuthComponent, UserComponent, ListComponent, CreateComponent, EditComponent, ReportComponent, RegisterComponent, EditUserComponent]
+  declarations: [AuthComponent, UserComponent, ListComponent, CreateComponent, EditComponent, ReportComponent, RegisterComponent, EditUserComponent, EditPasswordComponent]
 })
 export class UserModule {}
