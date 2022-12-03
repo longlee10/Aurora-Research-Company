@@ -8,9 +8,12 @@
         <ul>
             <li>Description: {{survey.description}}</li>
             <li>Creator: {{survey.author}}</li>
-            <li>Start time: {{survey.start_time| date:'short'}}</li>
-            <li>End time: {{survey.end_time | date:'short'}}</li>
+            <li>Start time: {{survey.start_time| date:'yyyy/MM/dd':"+0000"}}</li>
+            <li>End time: {{survey.end_time | date:'yyyy/MM/dd':"+0000"}}</li>
         </ul>
+    </div>
+    <div align="right">
+        <a href="mailto:admin@aurora-research.ca">Report this survey</a>
     </div>
     <span style="width: 80%">
         <hr />
