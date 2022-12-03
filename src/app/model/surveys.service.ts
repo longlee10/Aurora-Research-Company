@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Answer, Survey } from './survey.model';
+import { Survey } from './survey.model';
 import { environment } from '../../environments/environment';
 import { User } from './user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -79,11 +79,10 @@ export class SurveysService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
-  logout(): Observable<any>
+  logout(): void
   {
     this.authToken = undefined;
     localStorage.clear();
-    return this.http.post<any>(`${this.baseURL}/user/logout`, this.httpOptions);
   }
 
   loggedIn(): boolean

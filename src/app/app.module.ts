@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { NavbarComponent } from './partials/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ActiveComponent } from './survey/active/active.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { AnswerComponent } from './survey/answer/answer.component';

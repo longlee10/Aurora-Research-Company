@@ -38,9 +38,13 @@ export class AuthService
     return this.surveysService.loggedIn();
   }
 
-  logout(): Observable<any>
-  {
-    return this.surveysService.logout();
+  get isAdmin(): boolean {
+    return this.user?.role == 'admin';
   }
+  
+  logout(): void {
+    this.surveysService.logout();
+  }
+
   
 }

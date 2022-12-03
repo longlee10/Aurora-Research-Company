@@ -25,7 +25,10 @@ echarts.use([TitleComponent, TooltipComponent, GridComponent, BarChart, CanvasRe
 
 const routing = RouterModule.forChild([
   { path: 'auth', component: AuthComponent },
-  { path: 'main', component: UserComponent, canActivate: [AuthGuard],
+    {path: 'edit-user', component: EditUserComponent, canActivate: [AuthGuard]},
+   {path: 'edit-password', component: EditPasswordComponent, canActivate: [AuthGuard]},
+   {path: 'register', component: RegisterComponent},
+   {path: 'main', component: UserComponent, canActivate: [AuthGuard],
    children: [
     {path: 'survey/list', component: ListComponent, canActivate: [AuthGuard]},
     {path: 'survey/create', component: CreateComponent, canActivate: [AuthGuard]},
