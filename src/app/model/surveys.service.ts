@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Answer, Survey } from './survey.model';
+import { Survey } from './survey.model';
 import { environment } from '../../environments/environment';
 import { User } from './user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class SurveysService {
@@ -21,7 +22,7 @@ export class SurveysService {
     })
   };
 
-  constructor(private http: HttpClient, private jwtService: JwtHelperService) {
+  constructor(private http: HttpClient, private jwtService: JwtHelperService, private auth: AuthService) {
     this.loadUser();
     this.loadToken();
    }
@@ -69,11 +70,13 @@ export class SurveysService {
     return this.http.post<any>(`${this.baseURL}/user/register`, user, this.httpOptions);
   }
   
-  storeUserData(token: any, user: User): void
-  {
+  storeTokenData(token: any): void {
     localStorage.setItem('id_token', 'Bearer ' + token);
-    localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
+  }
+
+  storeUserData(user: User): void {
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   logout(): void
@@ -108,6 +111,18 @@ export class SurveysService {
       this.authToken = token;
       this.httpOptions.headers = this.httpOptions.headers.set('Authorization', token);
     }
+  }
+
+  updateUser(user: User): Observable<any>
+  {
+    this.loadToken();
+    return this.http.post(`${this.baseURL}/user/edit`, user, this.httpOptions);
+  }
+
+  updatePassword(user: User): Observable<any>
+  {
+    this.loadToken();
+    return this.http.post(`${this.baseURL}/user/edit-password`, user, this.httpOptions);
   }
 
 }

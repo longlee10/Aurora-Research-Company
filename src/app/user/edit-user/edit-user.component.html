@@ -1,0 +1,72 @@
+<!--Edit User Information-->
+<div class="container" style="max-width: 840px">
+  <!-- Title -->
+  <div class="container p-3">
+    <h1 class="text-center">Edit User Profile</h1>
+  </div>
+  <!-- Edit User Form -->
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-sm-8 offset-sm-1 aurora-bg-aliceblue">
+      <form
+        autocomplete="off"
+        #form="ngForm"
+        (ngSubmit)="save(form)"
+        ngNativeValidate
+      >
+        <fieldset class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="user.email"
+            id="email"
+            required
+            autofocus
+            autocomplete="off"
+          />
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label for="contactnumber">Contact Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="contact_number"
+            [(ngModel)]="user.contact_number"
+            id="contactnumber"
+            required
+            autocomplete="off"
+          />
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label for="displayName">Display Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="displayName"
+            [(ngModel)]="user.displayName"
+            id="displayName"
+            required
+            autocomplete="off"
+          />
+        </fieldset>
+
+        <fieldset class="form-group text-center">
+          <button class="btn btn-primary m-1" type="submit">
+            <i class="fas fa-save"></i>
+            Save
+          </button>
+          <button class="btn btn-secondary m-1" routerLink="/home">
+            <i class="fas fa-undo"></i>
+            Cancel
+          </button>
+        </fieldset>
+        <fieldset class="form-group text-center">
+          Want to change your Password? <a href="/user/edit-password">Change Password</a>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
