@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/model/admin.service';
 import { Survey } from 'src/app/model/survey.model';
-import { SurveysService } from 'src/app/model/surveys.service';
 
 @Component({
   selector: 'app-survey-list',
