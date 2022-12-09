@@ -1,16 +1,3 @@
-<!-- 
-File Name: user-list.component.html
-Description: User list layout in the admin module
-Web app name: Aurora Research Company
-Team name: A-Star
-Team Members:
-  Kuo, Yi-Cheng (301181514)
-  Yeung, Lok Ki (301252535)
-  Lam, Hing Yu (301257216)
-  Chung, Ting Hin (301287013)
-  Le, Hoang Long (301236235) 
--->
-
 <!-- User List Section -->
 <div class="container">
     <!-- Title -->
@@ -28,7 +15,7 @@ Team Members:
         <tbody>
             <tr *ngFor="let user of Users; let i = index">
                 <td class="text-center" style="word-break: break-all;">{{user.username}}</td>
-                <td style="overflow:hidden;">{{user.displayName}}</td>
+                <td style="word-break: break-all;">{{user.displayName}}</td>
                 <td>{{user.role}}</td>
                 <td class="text-center">
                     <a href="javascript:void(0);" [routerLink]="['edit-user', user._id ]"
