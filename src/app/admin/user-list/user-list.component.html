@@ -7,15 +7,15 @@
 
     <table class="table">
         <thead class="text-gray">
-            <th style="padding-left: 32px;">Username</th>
-            <th>Display Name</th>
+            <th class="text-center">Username</th>
+            <th style="word-break: break-all;">Display Name</th>
             <th>Role</th>
-            <th class="text-center" scope="col" style="width: 280px;">Action</th>
+            <th class="text-center" scope="col">Action</th>
         </thead>
         <tbody>
             <tr *ngFor="let user of Users; let i = index">
-                <td style="padding-left: 32px;">{{user.username}}</td>
-                <td>{{user.displayName}}</td>
+                <td class="text-center" style="word-break: break-all;">{{user.username}}</td>
+                <td style="overflow:hidden;">{{user.displayName}}</td>
                 <td>{{user.role}}</td>
                 <td class="text-center">
                     <a href="javascript:void(0);" [routerLink]="['edit-user', user._id ]"
