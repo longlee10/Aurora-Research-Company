@@ -1,16 +1,32 @@
+<!-- 
+File Name: answer.component.html
+Description: Answer survey component layout
+Web app name: Aurora Research Company
+Team name: A-Star
+Team Members:
+  Kuo, Yi-Cheng (301181514)
+  Yeung, Lok Ki (301252535)
+  Lam, Hing Yu (301257216)
+  Chung, Ting Hin (301287013)
+  Le, Hoang Long (301236235) 
+-->
+
 <div class="container" style="max-width:640px;">
     <!-- Survey Header part-->
     <div class="container p-3">
         <h1 class="text-center aurora-title">Survey Response</h1>
-    </div>  
+    </div>
     <div>
         <h3 class="text_blue"><i class="fa fa-table"></i> Survey Name: {{survey.name}}</h3>
         <ul>
             <li>Description: {{survey.description}}</li>
             <li>Creator: {{survey.author}}</li>
-            <li>Start time: {{survey.start_time| date:'short'}}</li>
-            <li>End time: {{survey.end_time | date:'short'}}</li>
+            <li>Start time: {{survey.start_time| date:'yyyy/MM/dd':"+0000"}}</li>
+            <li>End time: {{survey.end_time | date:'yyyy/MM/dd':"+0000"}}</li>
         </ul>
+    </div>
+    <div align="right">
+        <a href="mailto:admin@aurora-research.ca">Report this survey</a>
     </div>
     <span style="width: 80%">
         <hr />
@@ -22,7 +38,7 @@
             <div>
                 <div class="form-group" *ngIf="answer.responses!=undefined">
                     <label style="font-size: 14pt;" for="Question{{ question.question_priority }}TextField">
-                        <i class="fa fa-question-circle" style="color: #2393cb;"></i>  Question {{
+                        <i class="fa fa-question-circle" style="color: #2393cb;"></i> Question {{
                         question.question_priority }}
                         : {{question.name}} </label>
                     <div class="padding-field" *ngIf="question.type=='number'">
@@ -30,18 +46,11 @@
                             name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options" />
                     </div>
                     <div class="padding-field" *ngIf="question.type=='yesno'">
-                        <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" id="question{{ question.question_priority }}"
-                                name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options"
-                                value="yes" ng-required="true">
-                            <label for="question{{ question.question_priority }}">Yes</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" id="question{{ question.question_priority }}"
-                                name="responses.{{ question._id }}" [(ngModel)]="answer.responses[i].options"
-                                value="no" ng-required="true">
-                            <label for="question{{ question.question_priority }}">No</label><br>
-                        </div>
+                        <select [(ngModel)]="answer.responses[i].options" required>
+                            <option></option>
+                            <option>yes</option>
+                            <option>no</option>
+                        </select>
                     </div>
                 </div>
             </div>

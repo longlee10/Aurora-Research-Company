@@ -1,6 +1,6 @@
 <!-- 
-File Name: register.component.html
-Description: Register user component layout
+File Name: edit-user.component.html
+Description: Edit user component layout
 Web app name: Aurora Research Company
 Team name: A-Star
 Team Members:
@@ -11,66 +11,31 @@ Team Members:
   Le, Hoang Long (301236235) 
 -->
 
-
-<!-- Register User Section -->
-<div class="container" style="max-width: 840px;">
-
+<!--Edit User Information-->
+<div class="container" style="max-width: 840px">
   <!-- Title -->
   <div class="container p-3">
-    <h1 class="text-center aurora-title"><i class="fa fa-user-plus"></i> Please Sign Up</h1>
+    <h1 class="text-center">Edit User Profile</h1>
   </div>
-
-  <!-- Register Form -->
+  <!-- Edit User Form -->
   <div class="row">
     <div class="col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-sm-8 offset-sm-1 aurora-bg-aliceblue">
-      <div
-        class="bg-danger mt-2 p-2 text-center text-white"
-        *ngIf="errorMessage != null"
+      <form
+        autocomplete="off"
+        #form="ngForm"
+        (ngSubmit)="save(form)"
+        ngNativeValidate
       >
-        {{ errorMessage }}
-      </div>
-
-      <form autocomplete="off" #form="ngForm" (ngSubmit)="signup()" ngNativeValidate>
         <fieldset class="form-group">
-          <label for="username">Email</label>
+          <label for="email">Email</label>
           <input
             type="email"
             class="form-control"
             name="email"
             [(ngModel)]="user.email"
-            placeholder="Enter Email"
             id="email"
             required
             autofocus
-            autocomplete="off"
-          />
-        </fieldset>
-
-        <fieldset class="form-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            class="form-control"
-            name="username"
-            placeholder="Enter Username"
-            id="username"
-            [(ngModel)]="user.username"
-            required
-            autofocus
-            autocomplete="off"
-          />
-        </fieldset>
-
-        <fieldset class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            name="password"
-            placeholder="Enter Password"
-            id="password"
-            [(ngModel)]="user.password"
-            required
             autocomplete="off"
           />
         </fieldset>
@@ -82,7 +47,6 @@ Team Members:
             class="form-control"
             name="contact_number"
             [(ngModel)]="user.contact_number"
-            placeholder="Enter Contact Number"
             id="contactnumber"
             required
             autocomplete="off"
@@ -95,9 +59,8 @@ Team Members:
             type="text"
             class="form-control"
             name="displayName"
-            placeholder="Enter Display Name"
-            id="displayName"
             [(ngModel)]="user.displayName"
+            id="displayName"
             required
             autocomplete="off"
           />
@@ -105,8 +68,8 @@ Team Members:
 
         <fieldset class="form-group text-center">
           <button class="btn btn-primary m-1" type="submit">
-            <i class="fas fa-sign-in-alt"></i>
-            Sign Up
+            <i class="fas fa-save"></i>
+            Save
           </button>
           <button class="btn btn-secondary m-1" routerLink="/home">
             <i class="fas fa-undo"></i>
@@ -114,7 +77,7 @@ Team Members:
           </button>
         </fieldset>
         <fieldset class="form-group text-center">
-          Already A User? <a href="/user/login">Sign In</a>
+          Want to change your Password? <a href="/user/edit-password">Change Password</a>
         </fieldset>
       </form>
     </div>

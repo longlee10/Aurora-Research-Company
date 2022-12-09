@@ -1,3 +1,15 @@
+/*******************************
+File Name: admin.module.ts
+Description: Admin module. It defines the admin related routes and declares the admin related components.
+Web app name: Aurora Research Company
+Team name: A-Star
+Team Members:
+  Kuo, Yi-Cheng (301181514)
+  Yeung, Lok Ki (301252535)
+  Lam, Hing Yu (301257216)
+  Chung, Ting Hin (301287013)
+  Le, Hoang Long (301236235)
+********************************/
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
