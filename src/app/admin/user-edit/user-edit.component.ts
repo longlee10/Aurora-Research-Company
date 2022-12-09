@@ -1,3 +1,16 @@
+/*******************************
+File Name: user-edit.component.ts
+Description: Define the behaviour of user-edit component
+Web app name: Aurora Research Company
+Team name: A-Star
+Team Members:
+  Kuo, Yi-Cheng (301181514)
+  Yeung, Lok Ki (301252535)
+  Lam, Hing Yu (301257216)
+  Chung, Ting Hin (301287013)
+  Le, Hoang Long (301236235)
+********************************/
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';

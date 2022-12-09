@@ -1,3 +1,15 @@
+/*******************************
+File Name: user.module.ts
+Description: User module. It defines the user related routes and declares the user related components.
+Web app name: Aurora Research Company
+Team name: A-Star
+Team Members:
+  Kuo, Yi-Cheng (301181514)
+  Yeung, Lok Ki (301252535)
+  Lam, Hing Yu (301257216)
+  Chung, Ting Hin (301287013)
+  Le, Hoang Long (301236235)
+********************************/
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
