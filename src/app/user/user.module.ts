@@ -27,13 +27,13 @@ import { SharedModule } from '../shared/share.module';
 // Chart related import
 import { NgxEchartsModule } from 'ngx-echarts';
 import * as echarts from 'echarts/core';
-import { BarChart } from 'echarts/charts';
+import { BarChart, PieChart } from 'echarts/charts';
 import { TitleComponent, TooltipComponent, GridComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditPasswordComponent } from './edit-password/edit-password.component';
 
-echarts.use([TitleComponent, TooltipComponent, GridComponent, BarChart, CanvasRenderer]);
+echarts.use([TitleComponent, TooltipComponent, GridComponent, BarChart, PieChart, CanvasRenderer]);
 
 const routing = RouterModule.forChild([
   { path: 'auth', component: AuthComponent },
