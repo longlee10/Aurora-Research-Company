@@ -63,7 +63,7 @@ export class ReportComponent implements OnInit {
     const yesCount = options.filter(option => option == 'yes').length;
     const noCount = options.filter(option => option == 'no').length;
     // Make chart data
-    return this.createBarChartData(['Yes', 'No'], [yesCount, noCount]);
+    return this.createPieChartData(['Yes', 'No'], [yesCount, noCount]);
   }
 
   private getOptions(questionId: string, answers: Answer[]): string[] {
@@ -72,6 +72,31 @@ export class ReportComponent implements OnInit {
     ?.filter(response => response?.question_id == questionId)
     ?.flatMap(response => response?.options)
     ?.map(option => option ?? "");
+  }
+
+  private createPieChartData(categoryData: string[], valueData: number[]): any {
+    const totalRespondents = valueData.reduce((acc, current) => acc + current, 0);
+    return {
+      title: {
+        text: `Number of respondents: ${totalRespondents}`,
+        left: 'center'
+      },
+      tooltip: {
+        trigger: 'item'
+      },
+      series: [
+        {
+          data: categoryData.map((c, i) => {
+            return { 'name': c, 'value': valueData[i] }
+          }),
+          type: 'pie',
+          label: {
+            formatter: '{b}: {@9999} ({d}%)'
+          },
+        },
+      ],
+      color: ['#5C7BD9', '#FF8888', '#00FF00'],
+    };
   }
 
   private createBarChartData(categoryData: string[], valueData: number[]): any {
@@ -103,7 +128,7 @@ export class ReportComponent implements OnInit {
   private getNumberChartData(question: Question, answers: Answer[]): any {
     const options = this.getOptions(question._id!, answers)
                     .map(option => Number(option))
-                    .filter(option => option != NaN);
+                    .filter(option => !Number.isNaN(option));
     const [min, max] = [Math.min(...options) , Math.max(...options)];
     const binSize = (max - min) / 5;
     if (binSize == 0) {
