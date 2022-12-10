@@ -40,9 +40,13 @@ export class SurveysService {
     this.loadToken();
    }
 
-  getSurveys(onlyActive: boolean): Observable<[Survey]> {
+   getUserSurveys(): Observable<[Survey]> {
     this.loadToken();
-    return this.http.post<[Survey]>(`${this.baseURL}/survey/list`, {onlyActive: onlyActive}, this.httpOptions);
+    return this.http.post<[Survey]>(`${this.baseURL}/survey/my-list`, {}, this.httpOptions);
+  }
+
+  getSurveys(): Observable<[Survey]> {
+    return this.http.post<[Survey]>(`${this.baseURL}/survey/list`, {}, this.httpOptions);
   }
 
   getSurvey(id: String): Observable<Survey> {

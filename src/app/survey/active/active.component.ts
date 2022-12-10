@@ -11,6 +11,7 @@ Team Members:
   Le, Hoang Long (301236235)
 ********************************/
 import { Component, OnInit } from '@angular/core';
+import { Survey } from 'src/app/model/survey.model';
 import { SurveysService } from 'src/app/model/surveys.service';
 
 @Component({
@@ -19,11 +20,28 @@ import { SurveysService } from 'src/app/model/surveys.service';
   styleUrls: ['./active.component.css'],
 })
 export class ActiveComponent implements OnInit {
-  public surveys: any;
+  public activeSurveys: any;
+  public inactiveSurveys: any;
 
   constructor(private surveryService: SurveysService) {}
 
   ngOnInit(): void {
-    this.surveryService.getSurveys(true).subscribe((data) => (this.surveys = data));
+    // Obtain date
+    const date = new Date();
+
+    // Check inside date range
+    const insideDateRange = (survey: Survey) => {
+      const startTime = new Date(survey.start_time!);
+      startTime.setUTCHours(0, 0, 0, 0);
+      const endTime = new Date(survey.end_time!);
+      endTime.setUTCHours(23, 59, 59, 999);
+      return startTime <= date && date <= endTime;
+    };
+    
+    // Obtain surveys
+    this.surveryService.getSurveys().subscribe(data => {
+      this.activeSurveys = data.filter(survey => insideDateRange(survey));
+      this.inactiveSurveys = data.filter(survey => !insideDateRange(survey));
+    });
   }
 }

@@ -27,13 +27,13 @@ export class ListComponent implements OnInit {
   constructor(private surveryService: SurveysService) { }
 
   ngOnInit(): void {
-    this.surveryService.getSurveys(false).subscribe(data => this.surveys = data);
+    this.surveryService.getUserSurveys().subscribe(data => this.surveys = data);
   }
 
   deleteSurvey(survey: Survey) {
     if(confirm("Are you sure?")) {
       this.surveryService.deleteSurvey(survey._id!)
-      .pipe(mergeMap(success => this.surveryService.getSurveys(false)))
+      .pipe(mergeMap(success => this.surveryService.getUserSurveys()))
       .subscribe(data => this.surveys = data);
     }
   }
